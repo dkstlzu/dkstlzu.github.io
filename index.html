@@ -1,1 +1,302 @@
-"Hello World"
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>신석주 · SeockJu Shin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#ffffff;
+    --text:#1c1c1c;
+    --text-soft:#6b6b6b;
+    --line:#e4e4e4;
+    --accent:#2f4858;
+    --accent-soft:#eef1f2;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#ffffff;
+      --text:#1c1c1c;
+      --text-soft:#6b6b6b;
+      --line:#e4e4e4;
+      --accent:#2f4858;
+      --accent-soft:#eef1f2;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#ffffff;
+    --text:#1c1c1c;
+    --text-soft:#6b6b6b;
+    --line:#e4e4e4;
+    --accent:#2f4858;
+    --accent-soft:#eef1f2;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{
+    max-width:960px;
+    margin:0 auto;
+    padding:0 40px;
+  }
+
+  /* Header */
+  header.hero{
+    padding:96px 0 56px;
+    border-bottom:1px solid var(--line);
+  }
+  header.hero .name-kr{
+    font-size:2.4rem;
+    font-weight:900;
+    margin:0 0 4px;
+    letter-spacing:-0.02em;
+  }
+  header.hero .name-en{
+    font-size:1rem;
+    color:var(--text-soft);
+    font-weight:500;
+    margin:0 0 20px;
+  }
+  header.hero .role{
+    font-size:1.15rem;
+    font-weight:700;
+    color:var(--accent);
+    margin:0 0 20px;
+  }
+  header.hero .contact{
+    font-size:0.95rem;
+    color:var(--text-soft);
+  }
+  header.hero .contact a{
+    color:var(--text-soft);
+    text-decoration:none;
+    border-bottom:1px solid var(--line);
+  }
+  header.hero .contact a:hover{
+    color:var(--accent);
+    border-color:var(--accent);
+  }
+
+  /* Section */
+  section{
+    padding:28px 0;
+    border-bottom:1px solid var(--line);
+  }
+  section:last-of-type{
+    border-bottom:none;
+  }
+  section h2{
+    font-size:1.3rem;
+    font-weight:700;
+    color:var(--accent);
+    letter-spacing:-0.01em;
+    margin:0 0 24px;
+  }
+
+  .about p{
+    font-size:1.02rem;
+    margin:0;
+    max-width:64ch;
+  }
+
+  /* Career timeline */
+  .timeline-item{
+    display:flex;
+    gap:24px;
+    padding-bottom:28px;
+  }
+  .timeline-item:last-child{
+    padding-bottom:0;
+  }
+  .timeline-item .period{
+    flex:0 0 150px;
+    font-size:0.88rem;
+    color:var(--text-soft);
+    padding-top:2px;
+  }
+  .timeline-item .content{
+    flex:1;
+    border-left:2px solid var(--accent-soft);
+    padding-left:20px;
+  }
+  .timeline-item .org{
+    font-size:1.05rem;
+    font-weight:700;
+    margin:0 0 2px;
+  }
+  .timeline-item .position{
+    font-size:0.92rem;
+    color:var(--text-soft);
+    margin:0 0 10px;
+  }
+  .sub-list{
+    margin:8px 0 0;
+    padding:0;
+    list-style:none;
+  }
+  .sub-list li{
+    font-size:0.92rem;
+    color:var(--text);
+    padding:8px 0 8px 16px;
+    border-left:2px solid var(--line);
+    margin-left:2px;
+  }
+  .sub-list .sub-period{
+    display:block;
+    font-size:0.82rem;
+    color:var(--text-soft);
+    margin-top:2px;
+  }
+
+  /* Education */
+  .edu-item{
+    display:flex;
+    gap:24px;
+    padding-bottom:20px;
+  }
+  .edu-item:last-child{ padding-bottom:0; }
+  .edu-item .period{
+    flex:0 0 150px;
+    font-size:0.88rem;
+    color:var(--text-soft);
+    padding-top:2px;
+  }
+  .edu-item .content .school{
+    font-size:1.02rem;
+    font-weight:700;
+    margin:0 0 2px;
+  }
+  .edu-item .content .detail{
+    font-size:0.92rem;
+    color:var(--text-soft);
+    margin:0;
+  }
+
+  /* Skills */
+  .skills{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+  .skill-tag{
+    font-size:0.9rem;
+    font-weight:500;
+    padding:8px 16px;
+    border:1px solid var(--line);
+    border-radius:4px;
+    color:var(--text);
+  }
+
+  footer{
+    padding:40px 0 80px;
+    font-size:0.82rem;
+    color:var(--text-soft);
+  }
+
+  @media (max-width:600px){
+    header.hero{ padding:64px 0 40px; }
+    header.hero .name-kr{ font-size:2rem; }
+    .timeline-item, .edu-item{
+      flex-direction:column;
+      gap:6px;
+    }
+    .timeline-item .period, .edu-item .period{
+      flex:none;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="hero">
+    <p class="name-kr">신석주</p>
+    <p class="name-en">SeockJu Shin</p>
+    <p class="contact"><a href="mailto:dkstlzu@gmail.com">dkstlzu@gmail.com</a></p>
+  </header>
+
+  <section class="about">
+    <h2>소개</h2>
+    <p>전략 게임을 사랑하는 게임 프로그래머입니다. 팀단위의 작업 환경을 중시하며, 작업 능률과 작업 결과를 신경쓰며 작업하는 방식을 선호합니다. 다양한 도전과 시도를 두려워하지 않는 성격을 가지고 있습니다.</p>
+  </section>
+
+  <section class="career">
+    <h2>경력</h2>
+
+    <div class="timeline-item">
+      <div class="period">2024.09 ~ 재직중</div>
+      <div class="content">
+        <p class="org">파더메이드</p>
+        <p class="position">프로그래머</p>
+        <ul class="sub-list">
+          <li>영혼식당 신규 개발
+            <span class="sub-period">2026.01 ~ 2026.12</span>
+          </li>
+          <li>냥킹덤 라이브 서비스
+            <span class="sub-period">2024.09 ~ 2025.12</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="period">2023.01 ~ 2023.01</div>
+      <div class="content">
+        <p class="org">코그</p>
+        <p class="position">ARU팀 프로그래머 인턴</p>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="education">
+    <h2>학력</h2>
+
+    <div class="edu-item">
+      <div class="period">2015 ~ 2025</div>
+      <div class="content">
+        <p class="school">연세대학교</p>
+        <p class="detail">도시공학과 · 졸업 (신촌)</p>
+      </div>
+    </div>
+
+    <div class="edu-item">
+      <div class="period">2012 ~ 2014</div>
+      <div class="content">
+        <p class="school">청원고등학교</p>
+        <p class="detail">졸업 (청주)</p>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="skills">
+    <h2>보유 기술</h2>
+    <div class="skills">
+      <span class="skill-tag">C#</span>
+      <span class="skill-tag">Unity</span>
+      <span class="skill-tag">Unreal</span>
+      <span class="skill-tag">C++</span>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 SeockJu Shin
+  </footer>
+
+</div>
+
+</body>
+</html>
