@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>냥킹덤 · 라이브 서비스 - 신석주</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#ffffff;
+    --text:#1c1c1c;
+    --text-soft:#6b6b6b;
+    --line:#e4e4e4;
+    --accent:#2f4858;
+    --accent-soft:#eef1f2;
+  }
+  
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{
+    max-width:960px;
+    margin:0 auto;
+    padding:0 40px;
+  }
+
+  /* Header */
+  header{
+    padding:56px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .back-link{
+    display:inline-block;
+    font-size:0.9rem;
+    color:var(--accent);
+    text-decoration:none;
+    margin-bottom:20px;
+  }
+  .back-link:hover{
+    text-decoration:underline;
+  }
+  header h1{
+    font-size:2rem;
+    font-weight:900;
+    margin:0 0 8px;
+    letter-spacing:-0.02em;
+  }
+  .project-meta{
+    display:flex;
+    gap:24px;
+    margin-top:16px;
+    font-size:0.92rem;
+    color:var(--text-soft);
+  }
+  .meta-item{
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+  }
+  .meta-label{
+    font-size:0.82rem;
+    color:var(--text-soft);
+    font-weight:500;
+  }
+  .meta-value{
+    color:var(--text);
+    font-weight:500;
+  }
+
+  /* Content */
+  section{
+    padding:40px 0;
+    border-bottom:1px solid var(--line);
+  }
+  section:last-of-type{
+    border-bottom:none;
+  }
+  section h2{
+    font-size:1.4rem;
+    font-weight:700;
+    color:var(--accent);
+    margin:0 0 24px;
+    letter-spacing:-0.01em;
+  }
+  section h3{
+    font-size:1.1rem;
+    font-weight:700;
+    color:var(--text);
+    margin:28px 0 12px;
+  }
+  section h3:first-of-type{
+    margin-top:0;
+  }
+
+  .description{
+    font-size:1rem;
+    line-height:1.8;
+    max-width:70ch;
+    margin-bottom:24px;
+    color:var(--text);
+  }
+
+  .content-list{
+    list-style:none;
+    margin:0;
+    padding:0;
+  }
+  .content-list li{
+    font-size:0.95rem;
+    color:var(--text);
+    padding:12px 0 12px 24px;
+    border-left:3px solid var(--accent-soft);
+    margin:0;
+  }
+  .content-list li:first-child{
+    padding-top:0;
+  }
+  .content-list li strong{
+    color:var(--accent);
+    font-weight:600;
+  }
+
+  .tech-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:16px;
+  }
+  .tech-tag{
+    font-size:0.85rem;
+    padding:6px 12px;
+    background:var(--accent-soft);
+    color:var(--accent);
+    border-radius:3px;
+    font-weight:500;
+  }
+
+  footer{
+    padding:40px 0 80px;
+    font-size:0.82rem;
+    color:var(--text-soft);
+  }
+
+  @media (max-width:600px){
+    header{ padding:40px 0; }
+    header h1{ font-size:1.6rem; }
+    .project-meta{
+      flex-direction:column;
+      gap:12px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header>
+    <a href="index.html" class="back-link">← 돌아가기</a>
+    <h1>냥킹덤 · 라이브 서비스</h1>
+    <div class="project-meta">
+      <div class="meta-item">
+        <span class="meta-label">기간</span>
+        <span class="meta-value">2024.09 ~ 2025.12</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">역할</span>
+        <span class="meta-value">클라이언트 프로그래머</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">기술</span>
+        <span class="meta-value">Unity, C#</span>
+      </div>
+    </div>
+  </header>
+
+  <section class="overview">
+    <p class="description">
+      국내 출시 직후에 합류한 프로젝트로 기존 시스템 파악 및 최대한 기존 작업 스타일을 해치지 않는 선에서 개발을 이어 나가는 데에 집중했습니다. 라이브 개발팀에서 일어날 수 있는 사건·사고들을 팀 내에서 경험하면서 경각심을 갖게 되고 안정적인 운영 서비스의 중요도를 알게 된 프로젝트입니다.
+    </p>
+  </section>
+
+  <section class="main-content">
+    <h2>메인 콘텐츠 제작</h2>
+    <ul class="content-list">
+      <li>기존 전투 및 게임 시스템을 확장하여 일반 스토리 전투와 다른 <strong>보스레이드(토이레이드), 인트로 전투, 다수 파티아레나(마스터아레나)</strong>를 개발</li>
+      <li>신규 소속 진영 <strong>스텔라</strong> 구현</li>
+      <li>신규 지역 및 관련 시설, AI 등 구현</li>
+      <li>신규 등급 장비 <strong>초월 장비</strong> 구현</li>
+      <li>글로벌 채팅 시스템을 확장하여 <strong>개인 메시징 시스템</strong> 제안 및 구축</li>
+    </ul>
+  </section>
+
+  <section class="optimization">
+    <h2>게임 최적화</h2>
+    <h3>리소스 최적화</h3>
+    <ul class="content-list">
+      <li><strong>텍스처 리소스 메모리 120MB → 70MB 감소</strong> (리소스 해제 시점 및 중복 사용 점검)</li>
+      <li>다국어 에셋이 메모리에서 내려가지 않는 현상 개선</li>
+    </ul>
+    <h3>렌더링 최적화</h3>
+    <ul class="content-list">
+      <li>화면 밖 콘텐츠의 업데이트 최소화</li>
+      <li>프레임 드랍이 확인되는 UI를 검수하고 최적화 진행</li>
+      <li><strong>아이콘 풀링 및 풀링 방식의 스크롤</strong>을 적용하여 UI 개수 간소화</li>
+    </ul>
+  </section>
+
+  <section class="sub-content">
+    <h2>서브 콘텐츠 제작</h2>
+    <ul class="content-list">
+      <li>리텐션 확보를 위한 <strong>마을 상호작용 콘텐츠</strong> 제작</li>
+      <li><strong>부르마블, 사과 미니게임, 수박 미니게임</strong> 등 약 10종의 이벤트 제작</li>
+      <li>친구 초대 이벤트 구현</li>
+      <li>BM 개선을 위해 수십 종의 <strong>패키지 상품</strong> 등을 구현</li>
+    </ul>
+  </section>
+
+  <section class="ui-improvement">
+    <h2>UI 구조 개선</h2>
+    <ul class="content-list">
+      <li>UI/UX 개선 작업 및 이벤트 UI들의 <strong>온디맨드 리소스 로드</strong> 적용</li>
+      <li><strong>프로필 다중 슬롯 및 편집, 업로드 기능</strong> 제안 및 구현</li>
+    </ul>
+  </section>
+
+  <section class="tools">
+    <h2>글로벌 스토어 API 관련 툴 제작</h2>
+    <p class="description">
+      글로벌 출시에 따라 각 스토어의 인앱 상품 데이터 관리가 필요했습니다. 팀 내 테이블과 API 데이터 간의 변환 및 호환을 위해 Visual Basic으로 관련 툴을 제작했습니다.
+    </p>
+    <ul class="content-list">
+      <li><strong>주요 대상 오픈 국가:</strong> 일본, 미국, 대만, 유럽</li>
+      <li><strong>추가 지역:</strong> 동남아, 아랍 문화권 국가</li>
+      <li>Google Play Store, App Store API 자동 데이터 관리</li>
+    </ul>
+  </section>
+
+  <section class="community">
+    <h2>커뮤니티 관리 및 유저 대응</h2>
+    <ul class="content-list">
+      <li>공식 디스코드 커뮤니티 기본 관리</li>
+      <li>공식 문의 메일 관리</li>
+      <li>버그 보고에 따른 유저 대응 및 해결</li>
+    </ul>
+  </section>
+
+  <footer>
+    © 2026 SeockJu Shin
+  </footer>
+
+</div>
+
+</body>
+</html>

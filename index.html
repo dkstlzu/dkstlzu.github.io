@@ -159,6 +159,62 @@
     margin-top:2px;
   }
 
+  /* Projects */
+  .project-card{
+    padding:20px;
+    border:1px solid var(--line);
+    border-radius:4px;
+    margin-bottom:20px;
+  }
+  .project-card:last-child{
+    margin-bottom:0;
+  }
+  .project-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    margin-bottom:16px;
+  }
+  .project-title{
+    font-size:1.08rem;
+    font-weight:700;
+    margin:0;
+    color:var(--text);
+  }
+  .project-period{
+    font-size:0.88rem;
+    color:var(--text-soft);
+    margin:0;
+    flex-shrink:0;
+    margin-left:20px;
+  }
+  .project-highlights{
+    list-style:none;
+    margin:0;
+    padding:0;
+  }
+  .project-highlights li{
+    font-size:0.92rem;
+    color:var(--text);
+    padding:8px 0;
+    padding-left:12px;
+    border-left:2px solid var(--accent);
+  }
+  .project-highlights li:first-child{
+    padding-top:0;
+  }
+  .project-link{
+    display:inline-block;
+    margin-top:12px;
+    font-size:0.9rem;
+    color:var(--accent);
+    text-decoration:none;
+    font-weight:500;
+  }
+  .project-link:hover{
+    text-decoration:underline;
+  }
+
   /* Education */
   .edu-item{
     display:flex;
@@ -278,6 +334,41 @@
         <p class="school">청원고등학교</p>
         <p class="detail">졸업 (청주)</p>
       </div>
+    </div>
+
+  </section>
+
+  <section class="projects">
+    <h2>프로젝트</h2>
+    
+    <div class="project-card">
+      <div class="project-header">
+        <h3 class="project-title">냥킹덤 · 라이브 서비스</h3>
+        <p class="project-period">2024.09 ~ 2025.12</p>
+      </div>
+      <ul class="project-highlights">
+        <li>전투 시스템 확장: 보스레이드, 인트로전투, 다인 파티 아레나 등 신규 콘텐츠 개발</li>
+        <li>성능 최적화: 텍스처 메모리 120MB → 70MB 절감, UI 풀링으로 프레임드랍 개선</li>
+        <li>라이브 운영 콘텐츠: 미니게임·이벤트 10종 이상 제작, BM 패키지 구현</li>
+        <li>글로벌 스토어 대응 툴 제작 (일본/미국/대만/유럽 등 인앱 상품 데이터 관리 자동화)</li>
+        <li>유저 커뮤니티 및 문의 대응 (공식 디스코드, 버그 리포트 처리)</li>
+      </ul>
+      <a href="project-nyan.html" class="project-link">자세히 보기 →</a>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <h3 class="project-title">영혼식당 · 신규 개발</h3>
+        <p class="project-period">2026.01 ~ 2026.12</p>
+      </div>
+      <ul class="project-highlights">
+        <li>프로젝트 초기 아키텍처 설계: Addressable, URP, New Input System 도입</li>
+        <li>보드 생성 파이프라인 자동화: PSD Importer + 2D Tilemap 기반 아이콘/보드판 툴 제작</li>
+        <li>3D 공간 내 2D 오브젝트 정렬 에디팅 툴 개발 (수작업 렌더 순서 오류 방지)</li>
+        <li>UI/애니메이션 성능 최적화 (DOTween 도입, 캔버스 분리)</li>
+        <li>SDK 업그레이드 및 분석 체계 구축 (Firebase, GameBase, AppsFlyer 등)</li>
+      </ul>
+      <a href="project-soul.html" class="project-link">자세히 보기 →</a>
     </div>
 
   </section>

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>영혼식당 · 신규 개발 - 신석주</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#ffffff;
+    --text:#1c1c1c;
+    --text-soft:#6b6b6b;
+    --line:#e4e4e4;
+    --accent:#2f4858;
+    --accent-soft:#eef1f2;
+  }
+  
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{
+    max-width:960px;
+    margin:0 auto;
+    padding:0 40px;
+  }
+
+  /* Header */
+  header{
+    padding:56px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .back-link{
+    display:inline-block;
+    font-size:0.9rem;
+    color:var(--accent);
+    text-decoration:none;
+    margin-bottom:20px;
+  }
+  .back-link:hover{
+    text-decoration:underline;
+  }
+  header h1{
+    font-size:2rem;
+    font-weight:900;
+    margin:0 0 8px;
+    letter-spacing:-0.02em;
+  }
+  .project-meta{
+    display:flex;
+    gap:24px;
+    margin-top:16px;
+    font-size:0.92rem;
+    color:var(--text-soft);
+  }
+  .meta-item{
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+  }
+  .meta-label{
+    font-size:0.82rem;
+    color:var(--text-soft);
+    font-weight:500;
+  }
+  .meta-value{
+    color:var(--text);
+    font-weight:500;
+  }
+
+  /* Content */
+  section{
+    padding:40px 0;
+    border-bottom:1px solid var(--line);
+  }
+  section:last-of-type{
+    border-bottom:none;
+  }
+  section h2{
+    font-size:1.4rem;
+    font-weight:700;
+    color:var(--accent);
+    margin:0 0 24px;
+    letter-spacing:-0.01em;
+  }
+  section h3{
+    font-size:1.1rem;
+    font-weight:700;
+    color:var(--text);
+    margin:28px 0 12px;
+  }
+  section h3:first-of-type{
+    margin-top:0;
+  }
+  section h4{
+    font-size:0.95rem;
+    font-weight:600;
+    color:var(--text);
+    margin:16px 0 8px;
+  }
+
+  .description{
+    font-size:1rem;
+    line-height:1.8;
+    max-width:70ch;
+    margin-bottom:24px;
+    color:var(--text);
+  }
+
+  .content-list{
+    list-style:none;
+    margin:0;
+    padding:0;
+  }
+  .content-list li{
+    font-size:0.95rem;
+    color:var(--text);
+    padding:12px 0 12px 24px;
+    border-left:3px solid var(--accent-soft);
+    margin:0;
+  }
+  .content-list li:first-child{
+    padding-top:0;
+  }
+  .content-list li strong{
+    color:var(--accent);
+    font-weight:600;
+  }
+
+  .sub-list{
+    margin:12px 0 0 24px;
+    padding:0;
+    list-style:none;
+  }
+  .sub-list li{
+    font-size:0.9rem;
+    color:var(--text);
+    padding:8px 0 8px 12px;
+    border-left:2px solid var(--line);
+  }
+
+  .highlight-box{
+    background:var(--accent-soft);
+    padding:16px 20px;
+    border-left:4px solid var(--accent);
+    border-radius:2px;
+    margin:20px 0;
+  }
+  .highlight-box p{
+    margin:0;
+    font-size:0.95rem;
+    color:var(--text);
+  }
+
+  .tech-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:16px;
+  }
+  .tech-tag{
+    font-size:0.85rem;
+    padding:6px 12px;
+    background:var(--accent-soft);
+    color:var(--accent);
+    border-radius:3px;
+    font-weight:500;
+  }
+
+  footer{
+    padding:40px 0 80px;
+    font-size:0.82rem;
+    color:var(--text-soft);
+  }
+
+  @media (max-width:600px){
+    header{ padding:40px 0; }
+    header h1{ font-size:1.6rem; }
+    .project-meta{
+      flex-direction:column;
+      gap:12px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header>
+    <a href="index.html" class="back-link">← 돌아가기</a>
+    <h1>영혼식당 · 신규 개발</h1>
+    <div class="project-meta">
+      <div class="meta-item">
+        <span class="meta-label">기간</span>
+        <span class="meta-value">2026.01 ~ 2026.12</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">역할</span>
+        <span class="meta-value">클라이언트 프로그래머</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">기술</span>
+        <span class="meta-value">Unity, C#</span>
+      </div>
+    </div>
+  </header>
+
+  <section class="overview">
+    <p class="description">
+      냥킹덤의 주요 코드, 유틸리티 기능, 프로젝트 폴더 구조 등 주요 부분을 기반으로 대부분의 코드 및 구조를 재구성하고 개선하여 시작한 신규 프로젝트입니다. 머지게임(가십하버)를 레퍼런스로 잡고 단일로 먼저 시작했습니다.
+    </p>
+  </section>
+
+  <section class="architecture">
+    <h2>프로젝트 초기 아키텍처 설계</h2>
+    <p class="description">
+      Addressable Asset System, Universal Render Pipeline, New Input System을 프로젝트에 적용했습니다.
+    </p>
+    
+    <h3>Addressable 도입</h3>
+    <ul class="content-list">
+      <li>냥킹덤에서 사용되던 <strong>클래스 이름, 함수 시그니처를 유지</strong>하여 다른 팀원들의 작업 합류에 무리가 없도록 주의</li>
+      <li>에셋을 <strong>자동으로 관리될 영역</strong>과 <strong>수동으로 관리될 영역</strong>으로 분리</li>
+      <li>에따른 프로젝트 구조 제시 및 적용</li>
+    </ul>
+
+    <h3>URP 적용</h3>
+    <ul class="content-list">
+      <li>UI Canvas, Camera 관리 방식 수정</li>
+      <li>Post Processing 적용 방식 수정</li>
+    </ul>
+
+    <h3>New Input System</h3>
+    <ul class="content-list">
+      <li>여러 플랫폼, 여러 인풋 디바이스에서의 입력 처리</li>
+    </ul>
+  </section>
+
+  <section class="board-pipeline">
+    <h2>보드 생성 파이프라인 자동화</h2>
+    <p class="description">
+      Photoshop script, PSD Importer, 2D TileMap 기능을 활용해 게임의 메인 로직인 보드판 생성 기반을 마련했습니다.
+    </p>
+
+    <h3>설계 요구사항</h3>
+    <ul class="content-list">
+      <li>여러 이미지를 하나의 파일에 Sprite Sheet 방식으로 관리하는 부담 제거 및 외주 작업자와의 편의성 고려하여 각 아이콘 이미지 파일은 <strong>단일 포토샵 파일로 유지</strong></li>
+      <li>포토샵 특수효과가 <strong>사라지지 않고 잘 적용</strong>될 수 있도록</li>
+      <li>과도한 용량 중복을 피해 <strong>커밋을 가볍게 유지</strong></li>
+      <li>출시 이후 <strong>편리하게 아이템 아이콘을 추가 및 수정</strong>하면서도 이 과정에서 서비스 안정성을 해치지 않도록</li>
+      <li>각 아이템 및 슬롯을 이용해 <strong>보드판을 새로 생성하거나 수정하는 과정이 편리</strong>해지도록</li>
+    </ul>
+
+    <h3>구현 프로세스</h3>
+    <ol class="content-list" style="list-style:decimal; padding-left:40px;">
+      <li style="border:none; padding:8px 0 8px 12px;">아이콘 리소스 작업 - 알맞은 폴더 내에 알맞은 이름으로 파일 배치</li>
+      <li style="border:none; padding:8px 0 8px 12px;">Photoshop script를 통해 프로젝트 구조 내의 상대경로에서 아이콘을 긁어와 Linked로 파일을 레이어 재생성</li>
+      <li style="border:none; padding:8px 0 8px 12px;">PSD Importer를 통해 Sprite Atlas 및 TileMap Asset 자동 생성</li>
+      <li style="border:none; padding:8px 0 8px 12px;">에디터 스크립트를 통해 각 아이콘의 Address 세팅</li>
+    </ol>
+  </section>
+
+  <section class="edit-tool">
+    <h2>3D 공간 내 2D 오브젝트 정렬 에디팅 툴</h2>
+    <p class="description">
+      아웃 게임 요소인 식당을 개발하기 위해 3D 공간에 2D 이미지를 적절한 정렬순서를 유지하며 배치할 수 있는 에디팅 툴을 구현했습니다.
+    </p>
+
+    <p class="description">
+      엔진에서 Sorting Layer, Sorting Order, Sorting Group 등 다양한 옵션 및 기능을 제공하지만, 아트 및 기획자분들의 작업 효율 및 휴먼에러를 줄이기 위해 <strong>보면서 보이는 대로 배치하면 보이는 순서대로 렌더링</strong>될 수 있도록 텍스쳐를 자르고 배치하는 툴을 제작했습니다.
+    </p>
+
+    <h3>작업 프로세스</h3>
+    <ul class="content-list">
+      <li>해당 텍스쳐 우클릭 메뉴를 통해 에디터 스크립트 실행하여 이미지 Multi mode sprite로 자르기</li>
+      <li>Sprite Editor의 확장 툴에서 바닥에 해당하는 pivot 설정</li>
+      <li>Scene View에서 Handle을 통한 이미지 배치</li>
+    </ul>
+  </section>
+
+  <section class="performance">
+    <h2>성능 최적화</h2>
+
+    <h3>애니메이션 성능</h3>
+    <ul class="content-list">
+      <li><strong>DOTween 패키지 도입</strong>하여 연출 성능 향상</li>
+    </ul>
+
+    <h3>UI Canvas 최적화</h3>
+    <ul class="content-list">
+      <li>UI 요소에 사용되는 Animator <strong>지양</strong></li>
+      <li>필요한 경우 <strong>독립 캔버스로 분리</strong>하는 등 UI 기능 최적화</li>
+    </ul>
+  </section>
+
+  <section class="sdk">
+    <h2>SDK 업그레이드 및 분석 체계 구축</h2>
+    <p class="description">
+      변경된 Unity 버전에 맞게 각종 SDK를 업그레이드하고 초기화 과정 및 시점을 다듬었습니다.
+    </p>
+
+    <h3>적용 SDK</h3>
+    <ul class="content-list">
+      <li>NHN GameBase</li>
+      <li>Firebase</li>
+      <li>AppsFlyer</li>
+      <li>Google AdMob</li>
+    </ul>
+
+    <h3>Firebase Analytics 개선</h3>
+    <ul class="content-list">
+      <li>Firebase Analytics 지표 수집 방식 개선</li>
+      <li>팀원들이 볼 수 있도록 GA 보고서 세팅</li>
+    </ul>
+  </section>
+
+  <footer>
+    © 2026 SeockJu Shin
+  </footer>
+
+</div>
+
+</body>
+</html>
