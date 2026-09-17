@@ -53,8 +53,7 @@
 
   /* Header */
   header.hero{
-    padding:96px 0 56px;
-    border-bottom:1px solid var(--line);
+    padding:96px 0 32px;
   }
   header.hero .name-kr{
     font-size:2.4rem;
@@ -66,35 +65,36 @@
     font-size:1rem;
     color:var(--text-soft);
     font-weight:500;
-    margin:0 0 20px;
-  }
-  header.hero .role{
-    font-size:1.15rem;
-    font-weight:700;
-    color:var(--accent);
-    margin:0 0 20px;
+    margin:0 0 12px;
   }
   header.hero .contact{
     font-size:0.95rem;
     color:var(--text-soft);
+    margin:0;
+  }
+  header.hero .contact-item{
+    display:inline-flex;
+    align-items:center;
+    gap:4px;
+    margin-right:16px;
+  }
+  header.hero .contact-icon{
+    width:16px;
+    height:16px;
+    display:inline-block;
+    vertical-align:middle;
   }
   header.hero .contact a{
     color:var(--text-soft);
     text-decoration:none;
-    border-bottom:1px solid var(--line);
   }
   header.hero .contact a:hover{
     color:var(--accent);
-    border-color:var(--accent);
   }
 
   /* Section */
   section{
     padding:28px 0;
-    border-bottom:1px solid var(--line);
-  }
-  section:last-of-type{
-    border-bottom:none;
   }
   section h2{
     font-size:1.3rem;
@@ -107,52 +107,54 @@
   .about p{
     font-size:1.02rem;
     margin:0;
-    max-width:64ch;
   }
 
-  /* Career timeline */
-  .timeline-item{
+  .career{
+    border-bottom:1px solid var(--line);
+  }
+  .career-item{
     display:flex;
     gap:24px;
     padding-bottom:28px;
   }
-  .timeline-item:last-child{
+  .career-item:last-child{
     padding-bottom:0;
   }
-  .timeline-item .period{
-    flex:0 0 150px;
+  .career-left{
+    flex:0 0 200px;
+  }
+  .career-period{
     font-size:0.88rem;
     color:var(--text-soft);
-    padding-top:2px;
+    margin:0 0 4px;
   }
-  .timeline-item .content{
-    flex:1;
-    border-left:2px solid var(--accent-soft);
-    padding-left:20px;
-  }
-  .timeline-item .org{
+  .career-org{
     font-size:1.05rem;
     font-weight:700;
     margin:0 0 2px;
   }
-  .timeline-item .position{
+  .career-position{
     font-size:0.92rem;
     color:var(--text-soft);
-    margin:0 0 10px;
+    margin:0;
   }
-  .sub-list{
-    margin:8px 0 0;
+  .career-sub-list{
+    flex:1;
+    margin:0;
     padding:0;
     list-style:none;
   }
-  .sub-list li{
+  .career-sub-list li{
     font-size:0.92rem;
     color:var(--text);
     padding:8px 0 8px 16px;
     border-left:2px solid var(--line);
     margin-left:2px;
   }
-  .sub-list .sub-period{
+  .career-sub-list li:first-child{
+    padding-top:0;
+  }
+  .career-sub-list .sub-period{
     display:block;
     font-size:0.82rem;
     color:var(--text-soft);
@@ -160,11 +162,23 @@
   }
 
   /* Projects */
+  .projects{
+    padding:28px 0;
+    border-bottom:1px solid var(--line);
+  }
   .project-card{
-    padding:20px;
+    padding:14px 20px;
     border:1px solid var(--line);
     border-radius:4px;
-    margin-bottom:20px;
+    margin-bottom:16px;
+    cursor:pointer;
+    transition:background-color 0.2s;
+    text-decoration:none;
+    display:block;
+    color:inherit;
+  }
+  .project-card:hover{
+    background-color:var(--accent-soft);
   }
   .project-card:last-child{
     margin-bottom:0;
@@ -173,7 +187,7 @@
     display:flex;
     justify-content:space-between;
     align-items:baseline;
-    margin-bottom:16px;
+    margin-bottom:10px;
   }
   .project-title{
     font-size:1.08rem;
@@ -196,23 +210,13 @@
   .project-highlights li{
     font-size:0.92rem;
     color:var(--text);
-    padding:8px 0;
-    padding-left:12px;
-    border-left:2px solid var(--accent);
+    padding:4px 0;
   }
   .project-highlights li:first-child{
     padding-top:0;
   }
-  .project-link{
-    display:inline-block;
-    margin-top:12px;
-    font-size:0.9rem;
-    color:var(--accent);
-    text-decoration:none;
-    font-weight:500;
-  }
-  .project-link:hover{
-    text-decoration:underline;
+  .project-highlights li:last-child{
+    padding-bottom:0;
   }
 
   /* Education */
@@ -246,11 +250,11 @@
     gap:10px;
   }
   .skill-tag{
-    font-size:0.9rem;
+    font-size:0.85rem;
     font-weight:500;
-    padding:8px 16px;
+    padding:5px 20px;
     border:1px solid var(--line);
-    border-radius:4px;
+    border-radius:999px;
     color:var(--text);
   }
 
@@ -261,13 +265,13 @@
   }
 
   @media (max-width:600px){
-    header.hero{ padding:64px 0 40px; }
+    header.hero{ padding:64px 0 32px; }
     header.hero .name-kr{ font-size:2rem; }
-    .timeline-item, .edu-item{
+    .career-item{
       flex-direction:column;
-      gap:6px;
+      gap:8px;
     }
-    .timeline-item .period, .edu-item .period{
+    .career-left{
       flex:none;
     }
   }
@@ -280,7 +284,33 @@
   <header class="hero">
     <p class="name-kr">신석주</p>
     <p class="name-en">SeockJu Shin</p>
-    <p class="contact"><a href="mailto:dkstlzu@gmail.com">dkstlzu@gmail.com</a></p>
+    <p class="contact">
+      <span class="contact-item">
+        <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+          <polyline points="22,6 12,13 2,6"></polyline>
+        </svg>
+        <a href="mailto:dkstlzu@gmail.com">dkstlzu@gmail.com</a>
+      </span>
+      <span class="contact-item">
+        <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path>
+        </svg>
+        <a href="https://github.com/dkstlzu">Github</a>
+      </span>
+      <span class="contact-item">
+        <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.475-2.236-1.986-2.236-1.081 0-1.722.731-2.004 1.438-.103.25-.129.599-.129.948v5.419h-3.554s.045-8.789 0-9.705h3.554v1.373c.43-.664 1.199-1.608 2.925-1.608 2.136 0 3.738 1.393 3.738 4.388v5.552zM5.337 9.432c-1.144 0-1.915-.762-1.915-1.715 0-.953.771-1.715 1.921-1.715 1.148 0 1.918.762 1.918 1.715 0 .953-.771 1.715-1.924 1.715zm1.586 11.02H3.756V9.727h3.167v10.725zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"></path>
+        </svg>
+        <a href="https://www.linkedin.com/in/%EC%84%9D%EC%A3%BC-%EC%8B%A0-04076b29b/">LinkedIn</a>
+      </span>
+      <span class="contact-item remember-link">
+        <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0C5.383 0 0 5.383 0 12s5.383 12 12 12 12-5.383 12-12S18.617 0 12 0zm0 22c-5.514 0-10-4.486-10-10S6.486 2 12 2s10 4.486 10 10-4.486 10-10 10zm3.5-10c0 1.93-1.57 3.5-3.5 3.5S8.5 13.93 8.5 12 10.07 8.5 12 8.5s3.5 1.57 3.5 3.5z"></path>
+        </svg>
+        <a href="https://link.rmbr.in/vaqs47">Remember</a>
+      </span>
+    </p>
   </header>
 
   <section class="about">
@@ -291,30 +321,73 @@
   <section class="career">
     <h2>경력</h2>
 
-    <div class="timeline-item">
-      <div class="period">2024.09 ~ 재직중</div>
-      <div class="content">
-        <p class="org">파더메이드</p>
-        <p class="position">프로그래머</p>
-        <ul class="sub-list">
-          <li>영혼식당 신규 개발
-            <span class="sub-period">2026.01 ~ 2026.12</span>
-          </li>
-          <li>냥킹덤 라이브 서비스
-            <span class="sub-period">2024.09 ~ 2025.12</span>
-          </li>
-        </ul>
+    <div class="career-item">
+      <div class="career-left">
+        <p class="career-period">2024.09 ~ 재직중</p>
+        <p class="career-org">파더메이드</p>
+        <p class="career-position">프로그래머</p>
+      </div>
+      <ul class="career-sub-list">
+        <li>영혼식당 신규 개발
+          <span class="sub-period">2026.01 ~ 진행중</span>
+        </li>
+        <li>냥킹덤 라이브 서비스
+          <span class="sub-period">2024.09 ~ 2025.12</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="career-item">
+      <div class="career-left">
+        <p class="career-period">2023.01 ~ 2023.01</p>
+        <p class="career-org">코그</p>
+        <p class="career-position">ARU팀 프로그래머 인턴</p>
       </div>
     </div>
 
-    <div class="timeline-item">
-      <div class="period">2023.01 ~ 2023.01</div>
-      <div class="content">
-        <p class="org">코그</p>
-        <p class="position">ARU팀 프로그래머 인턴</p>
-      </div>
-    </div>
+  </section>
 
+  <section class="projects">
+    <h2>프로젝트</h2>
+    
+    <a href="fathermade-soulrestaurant.html" class="project-card">
+      <div class="project-header">
+        <h3 class="project-title">영혼식당 · 신규 개발</h3>
+        <p class="project-period">2026.01 ~ 2026.12</p>
+      </div>
+      <ul class="project-highlights">
+        <li>프로젝트 초기 아키텍처 설계: Addressable, URP, New Input System 도입</li>
+        <li>보드 생성 파이프라인 자동화: PSD Importer + 2D Tilemap 기반 아이콘/보드판 툴 제작</li>
+        <li>3D 공간 내 2D 오브젝트 정렬 에디팅 툴 개발 (수작업 렌더 순서 오류 방지)</li>
+        <li>UI/애니메이션 성능 최적화 (DOTween 도입, 캔버스 분리)</li>
+        <li>SDK 업그레이드 및 분석 체계 구축 (Firebase, GameBase, AppsFlyer 등)</li>
+      </ul>
+    </a>
+
+    <a href="fathermade-meowkingdom.html" class="project-card">
+      <div class="project-header">
+        <h3 class="project-title">냥킹덤 · 라이브 서비스</h3>
+        <p class="project-period">2024.09 ~ 2025.12</p>
+      </div>
+      <ul class="project-highlights">
+        <li>전투 시스템 확장: 보스레이드, 인트로전투, 다인 파티 아레나 등 신규 콘텐츠 개발</li>
+        <li>성능 최적화: 텍스처 메모리 120MB → 70MB 절감, UI 풀링으로 프레임드랍 개선</li>
+        <li>라이브 운영 콘텐츠: 미니게임·이벤트 10종 이상 제작, BM 패키지 구현</li>
+        <li>글로벌 스토어 대응 툴 제작 (일본/미국/대만/유럽 등 인앱 상품 데이터 관리 자동화)</li>
+        <li>유저 커뮤니티 및 문의 대응 (공식 디스코드, 버그 리포트 처리)</li>
+      </ul>
+    </a>
+
+  </section>
+
+  <section class="skills">
+    <h2>보유 기술</h2>
+    <div class="skills">
+      <span class="skill-tag">C#</span>
+      <span class="skill-tag">Unity</span>
+      <span class="skill-tag">Unreal</span>
+      <span class="skill-tag">C++</span>
+    </div>
   </section>
 
   <section class="education">
@@ -338,56 +411,23 @@
 
   </section>
 
-  <section class="projects">
-    <h2>프로젝트</h2>
-    
-    <div class="project-card">
-      <div class="project-header">
-        <h3 class="project-title">냥킹덤 · 라이브 서비스</h3>
-        <p class="project-period">2024.09 ~ 2025.12</p>
-      </div>
-      <ul class="project-highlights">
-        <li>전투 시스템 확장: 보스레이드, 인트로전투, 다인 파티 아레나 등 신규 콘텐츠 개발</li>
-        <li>성능 최적화: 텍스처 메모리 120MB → 70MB 절감, UI 풀링으로 프레임드랍 개선</li>
-        <li>라이브 운영 콘텐츠: 미니게임·이벤트 10종 이상 제작, BM 패키지 구현</li>
-        <li>글로벌 스토어 대응 툴 제작 (일본/미국/대만/유럽 등 인앱 상품 데이터 관리 자동화)</li>
-        <li>유저 커뮤니티 및 문의 대응 (공식 디스코드, 버그 리포트 처리)</li>
-      </ul>
-      <a href="fathermade-meowkingdom.html" class="project-link">자세히 보기 →</a>
-    </div>
-
-    <div class="project-card">
-      <div class="project-header">
-        <h3 class="project-title">영혼식당 · 신규 개발</h3>
-        <p class="project-period">2026.01 ~ 2026.12</p>
-      </div>
-      <ul class="project-highlights">
-        <li>프로젝트 초기 아키텍처 설계: Addressable, URP, New Input System 도입</li>
-        <li>보드 생성 파이프라인 자동화: PSD Importer + 2D Tilemap 기반 아이콘/보드판 툴 제작</li>
-        <li>3D 공간 내 2D 오브젝트 정렬 에디팅 툴 개발 (수작업 렌더 순서 오류 방지)</li>
-        <li>UI/애니메이션 성능 최적화 (DOTween 도입, 캔버스 분리)</li>
-        <li>SDK 업그레이드 및 분석 체계 구축 (Firebase, GameBase, AppsFlyer 등)</li>
-      </ul>
-      <a href="fathermade-soulrestaurant.html" class="project-link">자세히 보기 →</a>
-    </div>
-
-  </section>
-
-  <section class="skills">
-    <h2>보유 기술</h2>
-    <div class="skills">
-      <span class="skill-tag">C#</span>
-      <span class="skill-tag">Unity</span>
-      <span class="skill-tag">Unreal</span>
-      <span class="skill-tag">C++</span>
-    </div>
-  </section>
-
   <footer>
     © 2026 SeockJu Shin
   </footer>
 
 </div>
+
+<script>
+  // Remember 링크는 유효기간이 있습니다. 링크가 만료되면 아래 값을 false로 바꾸면
+  // 헤더에서 Remember 링크가 자동으로 숨겨집니다. (true = 표시, false = 숨김)
+  const REMEMBER_LINK_ENABLED = true;
+
+  if (!REMEMBER_LINK_ENABLED) {
+    document.querySelectorAll('.remember-link').forEach(function(el){
+      el.style.display = 'none';
+    });
+  }
+</script>
 
 </body>
 </html>
