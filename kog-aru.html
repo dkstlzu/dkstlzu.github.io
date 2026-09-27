@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>코그 ARU · 인턴 - 신석주</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#ffffff;
+    --text:#1c1c1c;
+    --text-soft:#6b6b6b;
+    --line:#e4e4e4;
+    --accent:#2f4858;
+    --accent-soft:#eef1f2;
+  }
+  
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{
+    max-width:960px;
+    margin:0 auto;
+    padding:0 40px;
+  }
+
+  /* Header */
+  header{
+    padding:56px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .back-link{
+    display:inline-block;
+    font-size:0.9rem;
+    color:var(--accent);
+    text-decoration:none;
+    margin-bottom:20px;
+  }
+  .back-link:hover{
+    text-decoration:underline;
+  }
+  header h1{
+    font-size:2rem;
+    font-weight:900;
+    margin:0 0 8px;
+    letter-spacing:-0.02em;
+  }
+  .project-meta{
+    display:flex;
+    gap:24px;
+    margin-top:16px;
+    font-size:0.92rem;
+    color:var(--text-soft);
+  }
+  .meta-item{
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+  }
+  .meta-label{
+    font-size:0.82rem;
+    color:var(--text-soft);
+    font-weight:500;
+  }
+  .meta-value{
+    color:var(--text);
+    font-weight:500;
+  }
+
+  /* Content */
+  section{
+    padding:40px 0;
+    border-bottom:1px solid var(--line);
+  }
+  section:last-of-type{
+    border-bottom:none;
+  }
+  section h2{
+    font-size:1.4rem;
+    font-weight:700;
+    color:var(--accent);
+    margin:0 0 24px;
+    letter-spacing:-0.01em;
+  }
+  section h3{
+    font-size:1.1rem;
+    font-weight:700;
+    color:var(--text);
+    margin:28px 0 12px;
+  }
+  section h3:first-of-type{
+    margin-top:0;
+  }
+
+  .description{
+    font-size:1rem;
+    line-height:1.8;
+    margin-bottom:24px;
+    color:var(--text);
+  }
+
+  .content-list{
+    list-style:none;
+    margin:0;
+    padding:0;
+  }
+  .content-list li{
+    font-size:0.95rem;
+    color:var(--text);
+    padding:12px 0 12px 24px;
+    border-left:3px solid var(--accent-soft);
+    margin:0;
+  }
+  .content-list li:first-child{
+    padding-top:0;
+  }
+  .content-list li strong{
+    color:var(--accent);
+    font-weight:600;
+  }
+
+  .tech-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:16px;
+  }
+  .tech-tag{
+    font-size:0.85rem;
+    padding:6px 12px;
+    background:var(--accent-soft);
+    color:var(--accent);
+    border-radius:3px;
+    font-weight:500;
+  }
+
+  footer{
+    padding:40px 0 80px;
+    font-size:0.82rem;
+    color:var(--text-soft);
+  }
+
+  @media (max-width:600px){
+    header{ padding:40px 0; }
+    header h1{ font-size:1.6rem; }
+    .project-meta{
+      flex-direction:column;
+      gap:12px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header>
+    <a href="index.html" class="back-link">← 돌아가기</a>
+    <h1>코그 ARU · 인턴</h1>
+    <div class="project-meta">
+      <div class="meta-item">
+        <span class="meta-label">기간</span>
+        <span class="meta-value">2023.01 (1개월)</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">역할</span>
+        <span class="meta-value">프로그래머 인턴</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">기술</span>
+        <span class="meta-value">Unreal Engine 5, C++, Blueprint, Vivox</span>
+      </div>
+    </div>
+  </header>
+
+  <section class="overview">
+    <p class="description">
+      이전에 구현해 본 적이 있던 Vivox API를 활용해, Unreal Engine 5에서 사용할 수 있는 Vivox Plugin 기반으로 음성 채팅 기능을 구현했습니다. C++로 기능을 구현하고 Blueprint에서도 사용할 수 있도록 확장했습니다.
+    </p>
+  </section>
+
+  <section class="voice-chat">
+    <h2>음성 채팅 기능 구현</h2>
+    <ul class="content-list">
+      <li><strong>Volumetric Trigger</strong>를 통해 공간에 PC가 접근하면 공개 음성 채팅 채널에 자동 입장·퇴장</li>
+      <li>상호작용 키로 입장하며 제한 인원수가 정해진 <strong>Private 채널</strong> 구현</li>
+      <li>유저별 <strong>볼륨 조절 및 음소거</strong> 기능 구현</li>
+      <li>C++ 구현부를 <strong>Blueprint에서 사용 가능</strong>하도록 확장</li>
+    </ul>
+  </section>
+
+  <footer>
+    © 2026 SeockJu Shin
+  </footer>
+
+</div>
+
+</body>
+</html>

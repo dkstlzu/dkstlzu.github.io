@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>게임 서버 프레임워크 · 개인 프로젝트 - 신석주</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#ffffff;
+    --text:#1c1c1c;
+    --text-soft:#6b6b6b;
+    --line:#e4e4e4;
+    --accent:#2f4858;
+    --accent-soft:#eef1f2;
+  }
+  
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{
+    max-width:960px;
+    margin:0 auto;
+    padding:0 40px;
+  }
+
+  /* Header */
+  header{
+    padding:56px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .back-link{
+    display:inline-block;
+    font-size:0.9rem;
+    color:var(--accent);
+    text-decoration:none;
+    margin-bottom:20px;
+  }
+  .back-link:hover{
+    text-decoration:underline;
+  }
+  header h1{
+    font-size:2rem;
+    font-weight:900;
+    margin:0 0 8px;
+    letter-spacing:-0.02em;
+  }
+  .project-meta{
+    display:flex;
+    gap:24px;
+    margin-top:16px;
+    font-size:0.92rem;
+    color:var(--text-soft);
+  }
+  .meta-item{
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+  }
+  .meta-label{
+    font-size:0.82rem;
+    color:var(--text-soft);
+    font-weight:500;
+  }
+  .meta-value{
+    color:var(--text);
+    font-weight:500;
+  }
+
+  /* Content */
+  section{
+    padding:40px 0;
+    border-bottom:1px solid var(--line);
+  }
+  section:last-of-type{
+    border-bottom:none;
+  }
+  section h2{
+    font-size:1.4rem;
+    font-weight:700;
+    color:var(--accent);
+    margin:0 0 24px;
+    letter-spacing:-0.01em;
+  }
+  section h3{
+    font-size:1.1rem;
+    font-weight:700;
+    color:var(--text);
+    margin:28px 0 12px;
+  }
+  section h3:first-of-type{
+    margin-top:0;
+  }
+
+  .description{
+    font-size:1rem;
+    line-height:1.8;
+    margin-bottom:24px;
+    color:var(--text);
+  }
+
+  .content-list{
+    list-style:none;
+    margin:0;
+    padding:0;
+  }
+  .content-list li{
+    font-size:0.95rem;
+    color:var(--text);
+    padding:12px 0 12px 24px;
+    border-left:3px solid var(--accent-soft);
+    margin:0;
+  }
+  .content-list li:first-child{
+    padding-top:0;
+  }
+  .content-list li strong{
+    color:var(--accent);
+    font-weight:600;
+  }
+
+  .tech-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:16px;
+  }
+  .tech-tag{
+    font-size:0.85rem;
+    padding:6px 12px;
+    background:var(--accent-soft);
+    color:var(--accent);
+    border-radius:3px;
+    font-weight:500;
+  }
+
+  footer{
+    padding:40px 0 80px;
+    font-size:0.82rem;
+    color:var(--text-soft);
+  }
+
+  @media (max-width:600px){
+    header{ padding:40px 0; }
+    header h1{ font-size:1.6rem; }
+    .project-meta{
+      flex-direction:column;
+      gap:12px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header>
+    <a href="index.html" class="back-link">← 돌아가기</a>
+    <h1>게임 서버 프레임워크 · 개인 프로젝트</h1>
+    <div class="project-meta">
+      <div class="meta-item">
+        <span class="meta-label">구분</span>
+        <span class="meta-value">개인 프로젝트</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">기술</span>
+        <span class="meta-value">C#, Socket</span>
+      </div>
+    </div>
+  </header>
+
+  <section class="overview">
+    <p class="description">
+      C# 소켓 통신을 기반으로 게임 서버에 필요한 기본 구조를 직접 설계하고 구현한 개인 프로젝트입니다.
+    </p>
+  </section>
+
+  <section class="features">
+    <h2>주요 기능</h2>
+    <ul class="content-list">
+      <li><strong>세션 관리</strong></li>
+      <li><strong>패킷 직렬화</strong></li>
+      <li><strong>로비</strong></li>
+      <li><strong>매칭</strong></li>
+      <li><strong>RPC</strong></li>
+    </ul>
+  </section>
+
+  <footer>
+    © 2026 SeockJu Shin
+  </footer>
+
+</div>
+
+</body>
+</html>

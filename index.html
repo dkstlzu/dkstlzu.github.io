@@ -183,6 +183,84 @@
   .project-card:hover{
     background-color:var(--accent-soft);
   }
+  /* 앱 아이콘이 있는 카드: 제목 링크가 카드 전체를 덮고, 아이콘/스토어 링크만 그 위로 */
+  .project-card.has-app{
+    position:relative;
+    display:flex;
+    gap:20px;
+    align-items:flex-start;
+  }
+  .project-body{
+    flex:1;
+    min-width:0;
+  }
+  .card-link{
+    color:inherit;
+    text-decoration:none;
+  }
+  .card-link::after{
+    content:"";
+    position:absolute;
+    inset:0;
+  }
+  .app-links{
+    position:relative;
+    z-index:1;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:8px;
+    flex-shrink:0;
+    pointer-events:none; /* 기간 글자 클릭은 카드 링크로 통과 */
+  }
+  .app-links a{
+    pointer-events:auto;
+  }
+  .app-links .project-period{
+    margin-left:0;
+  }
+  .app-box{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:8px;
+    padding:10px 12px;
+    background:#3a3a3a;
+    border-radius:12px;
+  }
+  .app-icon img{
+    width:64px;
+    height:64px;
+    border-radius:14px;
+    display:block;
+  }
+  .store-links{
+    display:flex;
+    gap:10px;
+  }
+  .store-links a{
+    display:block;
+    width:18px;
+    height:18px;
+    color:#c8c8c8;
+  }
+  .store-links a:hover{
+    color:#ffffff;
+  }
+  .store-links svg{
+    width:100%;
+    height:100%;
+    fill:currentColor;
+    display:block;
+  }
+
+  /* 상세 페이지가 없는(또는 아직 연결하지 않은) 카드 */
+  .project-card.no-link{
+    cursor:default;
+  }
+  .project-card.no-link:hover{
+    background-color:transparent;
+  }
   .project-card:last-child{
     margin-bottom:0;
   }
@@ -430,31 +508,79 @@
   <section class="projects">
     <h2>프로젝트</h2>
     
-    <a href="fathermade-soulrestaurant.html" class="project-card">
-      <div class="project-header">
-        <h3 class="project-title">영혼식당 · 신규 개발</h3>
-        <p class="project-period">2026.01 ~ 진행중</p>
-      </div>
-      <ul class="project-highlights">
-        <li>프로젝트 초기 아키텍처 설계: Addressable, URP, New Input System 도입</li>
-        <li>보드 생성 파이프라인 자동화: PSD Importer + 2D Tilemap 기반 아이콘/보드판 툴 제작</li>
-        <li>3D 공간 내 2D 오브젝트 정렬 에디팅 툴 개발 (수작업 렌더 순서 오류 방지)</li>
-        <li>UI/애니메이션 성능 최적화 (DOTween 도입, 캔버스 분리)</li>
-        <li>SDK 업그레이드 및 분석 체계 구축 (Firebase, GameBase, AppsFlyer 등)</li>
-      </ul>
-    </a>
+    <!-- 스토어 아이콘 (Simple Icons, CC0) -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+      <symbol id="icon-appstore" viewBox="0 0 24 24"><path d="M8.8086 14.9194l6.1107-11.0368c.0837-.1513.1682-.302.2437-.4584.0685-.142.1267-.2854.1646-.4403.0803-.3259.0588-.6656-.066-.9767-.1238-.3095-.3417-.5678-.6201-.7355a1.4175 1.4175 0 0 0-.921-.1924c-.3207.043-.6135.1935-.8443.4288-.1094.1118-.1996.2361-.2832.369-.092.1463-.175.2979-.259.4492l-.3864.6979-.3865-.6979c-.0837-.1515-.1667-.303-.2587-.4492-.0837-.1329-.1739-.2572-.2835-.369-.2305-.2353-.5233-.3857-.844-.429a1.4181 1.4181 0 0 0-.921.1926c-.2784.1677-.4964.426-.6203.7355-.1246.311-.1461.6508-.066.9767.038.155.0962.2984.1648.4403.0753.1564.1598.307.2437.4584l1.248 2.2543-4.8625 8.7825H2.0295c-.1676 0-.3351-.0007-.5026.0092-.1522.009-.3004.0284-.448.0714-.3108.0906-.5822.2798-.7783.548-.195.2665-.3006.5929-.3006.9279 0 .3352.1057.6612.3006.9277.196.2683.4675.4575.7782.548.1477.043.296.0623.4481.0715.1675.01.335.009.5026.009h13.0974c.0171-.0357.059-.1294.1-.2697.415-1.4151-.6156-2.843-2.0347-2.843zM3.113 18.5418l-.7922 1.5008c-.0818.1553-.1644.31-.2384.4705-.067.1458-.124.293-.1611.452-.0785.3346-.0576.6834.0645 1.0029.1212.3175.3346.583.607.7549.2727.172.5891.2416.9013.1975.3139-.044.6005-.1986.8263-.4402.1072-.1148.1954-.2424.2772-.3787.0902-.1503.1714-.3059.2535-.4612L6 19.4636c-.0896-.149-.9473-1.4704-2.887-.9218m20.5861-3.0056a1.4707 1.4707 0 0 0-.779-.5407c-.1476-.0425-.2961-.0616-.4483-.0705-.1678-.0099-.3352-.0091-.503-.0091H18.648l-4.3891-7.817c-.6655.7005-.9632 1.485-1.0773 2.1976-.1655 1.0333.0367 2.0934.546 3.0004l5.2741 9.3933c.084.1494.167.299.2591.4435.0837.131.1739.2537.2836.364.231.2323.5238.3809.8449.4232.3192.0424.643-.0244.9217-.1899.2784-.1653.4968-.4204.621-.7257.1246-.3072.146-.6425.0658-.9641-.0381-.1529-.0962-.2945-.165-.4346-.0753-.1543-.1598-.303-.2438-.4524l-1.216-2.1662h1.596c.1677 0 .3351.0009.5029-.009.1522-.009.3007-.028.4483-.0705a1.4707 1.4707 0 0 0 .779-.5407A1.5386 1.5386 0 0 0 24 16.452a1.539 1.539 0 0 0-.3009-.9158Z"/></symbol>
+      <symbol id="icon-googleplay" viewBox="0 0 24 24"><path d="M22.018 13.298l-3.919 2.218-3.515-3.493 3.543-3.521 3.891 2.202a1.49 1.49 0 0 1 0 2.594zM1.337.924a1.486 1.486 0 0 0-.112.568v21.017c0 .217.045.419.124.6l11.155-11.087L1.337.924zm12.207 10.065l3.258-3.238L3.45.195a1.466 1.466 0 0 0-.946-.179l11.04 10.973zm0 2.067l-11 10.933c.298.036.612-.016.906-.183l13.324-7.54-3.23-3.21z"/></symbol>
+    </svg>
 
-    <a href="fathermade-meowkingdom.html" class="project-card">
-      <div class="project-header">
-        <h3 class="project-title">냥킹덤 · 라이브 서비스</h3>
+    <!-- 카드 전체 클릭은 제목 링크(card-link)가 카드를 덮는 방식. 앱 아이콘/스토어 링크는 그 위에 올라감 -->
+    <div class="project-card has-app">
+      <div class="project-body">
+        <div class="project-header">
+          <h3 class="project-title"><a href="fathermade-soulrestaurant.html" class="card-link">영혼식당 · 신규 개발</a></h3>
+        </div>
+        <ul class="project-highlights">
+          <li>프로젝트 초기 아키텍처 설계: Addressable, URP, Input System 도입</li>
+          <li>보드 생성 파이프라인 구축: PSD Importer + 2D Tilemap 기반 아이콘/보드판 툴 제작</li>
+          <li>2D 스프라이트 정렬 에디팅 툴 개발</li>
+          <li>Firebase, GameBase, AppsFlyer SDK 적용</li>
+          <li>마케팅, 인게임 지표 설정</li>
+        </ul>
+      </div>
+      <div class="app-links" data-appstore="https://apps.apple.com/kr/app/id6757134728">
+        <p class="project-period">2026.01 ~ 진행중</p>
+        <div class="app-box">
+          <a class="app-icon" href="https://play.google.com/store/apps/details?id=com.fathermade.merge" target="_blank" rel="noopener" title="스토어에서 보기"><img src="images/apps/soulrestaurant.png" alt="영혼식당 앱 아이콘"></a>
+          <div class="store-links">
+            <a href="https://apps.apple.com/kr/app/id6757134728" target="_blank" rel="noopener" title="App Store"><svg><use href="#icon-appstore"/></svg></a>
+            <a href="https://play.google.com/store/apps/details?id=com.fathermade.merge" target="_blank" rel="noopener" title="Google Play"><svg><use href="#icon-googleplay"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card has-app">
+      <div class="project-body">
+        <div class="project-header">
+          <h3 class="project-title"><a href="fathermade-meowkingdom.html" class="card-link">냥킹덤 · 라이브 서비스</a></h3>
+        </div>
+        <ul class="project-highlights">
+          <li>전투 시스템 확장: 보스레이드, 인트로전투, 다인 파티 아레나 등 신규 콘텐츠 개발</li>
+          <li>성능 최적화: 텍스처 메모리 절감</li>
+          <li>라이브 운영 콘텐츠: 미니게임·이벤트 10종 이상 제작, BM 패키지 구현</li>
+          <li>글로벌 스토어 대응 툴 제작</li>
+        </ul>
+      </div>
+      <div class="app-links" data-appstore="https://apps.apple.com/kr/app/id1606840138">
         <p class="project-period">2024.09 ~ 2025.12</p>
+        <div class="app-box">
+          <a class="app-icon" href="https://play.google.com/store/apps/details?id=com.fathermade.catkingdom" target="_blank" rel="noopener" title="스토어에서 보기"><img src="images/apps/meowkingdom.png" alt="냥킹덤 앱 아이콘"></a>
+          <div class="store-links">
+            <a href="https://apps.apple.com/kr/app/id1606840138" target="_blank" rel="noopener" title="App Store"><svg><use href="#icon-appstore"/></svg></a>
+            <a href="https://play.google.com/store/apps/details?id=com.fathermade.catkingdom" target="_blank" rel="noopener" title="Google Play"><svg><use href="#icon-googleplay"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 상세 페이지(kog-aru.html)는 만들어 둠. 연결할 때 div를 <a href="kog-aru.html" class="project-card">로 바꾸기 -->
+    <div class="project-card no-link">
+      <div class="project-header">
+        <h3 class="project-title">코그 ARU · 인턴</h3>
+        <p class="project-period">2023.01 (1개월)</p>
       </div>
       <ul class="project-highlights">
-        <li>전투 시스템 확장: 보스레이드, 인트로전투, 다인 파티 아레나 등 신규 콘텐츠 개발</li>
-        <li>성능 최적화: 텍스처 메모리 120MB → 70MB 절감, UI 풀링으로 프레임드랍 개선</li>
-        <li>라이브 운영 콘텐츠: 미니게임·이벤트 10종 이상 제작, BM 패키지 구현</li>
-        <li>글로벌 스토어 대응 툴 제작 (일본/미국/대만/유럽 등 인앱 상품 데이터 관리 자동화)</li>
-        <li>유저 커뮤니티 및 문의 대응 (공식 디스코드, 버그 리포트 처리)</li>
+        <li>Unreal Engine 5 음성 채팅: Vivox Plugin 기반 C++ 구현 및 Blueprint 확장</li>
+      </ul>
+    </div>
+
+    <a href="personal-server.html" class="project-card">
+      <div class="project-header">
+        <h3 class="project-title">게임 서버 프레임워크 · 개인 프로젝트</h3>
+      </div>
+      <ul class="project-highlights">
+        <li>C# 소켓 기반 서버 프레임워크: 세션 관리, 패킷 직렬화, 로비·매칭, RPC 구현</li>
       </ul>
     </a>
 
@@ -548,6 +674,13 @@
   if (!REMEMBER_LINK_ENABLED) {
     document.querySelectorAll('.remember-link').forEach(function(el){
       el.style.display = 'none';
+    });
+  }
+
+  // 앱 아이콘: Apple 기기(iPhone/iPad/Mac)는 App Store, 그 외는 Google Play (HTML 기본값)
+  if (/iPhone|iPad|iPod|Macintosh/.test(navigator.userAgent)) {
+    document.querySelectorAll('.app-links').forEach(function(el){
+      el.querySelector('.app-icon').href = el.dataset.appstore;
     });
   }
 
