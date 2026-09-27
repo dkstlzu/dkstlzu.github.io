@@ -523,9 +523,9 @@
         <ul class="project-highlights">
           <li>프로젝트 초기 아키텍처 설계: Addressable, URP, Input System 도입</li>
           <li>보드 생성 파이프라인 구축: PSD Importer + 2D Tilemap 기반 아이콘/보드판 툴 제작</li>
-          <li>2D 스프라이트 정렬 에디팅 툴 개발</li>
+          <li>2.5D 월드 레벨디자인 툴 개발</li>
           <li>Firebase, GameBase, AppsFlyer SDK 적용</li>
-          <li>마케팅, 인게임 지표 설정</li>
+          <li>마케팅에 필요한 인게임 지표 설정</li>
         </ul>
       </div>
       <div class="app-links" data-appstore="https://apps.apple.com/kr/app/id6757134728">
@@ -575,14 +575,15 @@
       </ul>
     </div>
 
-    <a href="personal-server.html" class="project-card">
+    <!-- 상세 페이지(personal-server.html)는 만들어 둠. 연결할 때 div를 <a href="personal-server.html" class="project-card">로 바꾸기 -->
+    <div class="project-card no-link">
       <div class="project-header">
         <h3 class="project-title">게임 서버 프레임워크 · 개인 프로젝트</h3>
       </div>
       <ul class="project-highlights">
         <li>C# 소켓 기반 서버 프레임워크: 세션 관리, 패킷 직렬화, 로비·매칭, RPC 구현</li>
       </ul>
-    </a>
+    </div>
 
   </section>
 
@@ -669,7 +670,7 @@
 <script>
   // Remember 링크는 유효기간이 있습니다. 링크가 만료되면 아래 값을 false로 바꾸면
   // 헤더에서 Remember 링크가 자동으로 숨겨집니다. (true = 표시, false = 숨김)
-  const REMEMBER_LINK_ENABLED = true;
+  const REMEMBER_LINK_ENABLED = false;
 
   if (!REMEMBER_LINK_ENABLED) {
     document.querySelectorAll('.remember-link').forEach(function(el){
