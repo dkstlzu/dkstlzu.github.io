@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>코그 ARU · 인턴 - 신석주</title>
-<link rel="alternate" hreflang="ko" href="kog-aru.html">
-<link rel="alternate" hreflang="en" href="kog-aru.en.html">
+<title>Game Server Framework · Personal Project - SeockJu Shin</title>
+<link rel="alternate" hreflang="ko" href="personal-server.html">
+<link rel="alternate" hreflang="en" href="personal-server.en.html">
 <script src="lang.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -192,40 +192,37 @@
 <body>
 
 <div class="wrap">
-  <nav class="lang-switch" aria-label="Language"><a href="kog-aru.html" hreflang="ko" lang="ko" class="active" aria-current="true">KO</a><span aria-hidden="true">|</span><a href="kog-aru.en.html" hreflang="en" lang="en">EN</a></nav>
+  <nav class="lang-switch" aria-label="Language"><a href="personal-server.html" hreflang="ko" lang="ko">KO</a><span aria-hidden="true">|</span><a href="personal-server.en.html" hreflang="en" lang="en" class="active" aria-current="true">EN</a></nav>
 
   <header>
-    <a href="index.html" class="back-link">← 돌아가기</a>
-    <h1>코그 ARU · 인턴</h1>
+    <a href="index.en.html" class="back-link">← Back</a>
+    <h1>Game Server Framework · Personal Project</h1>
     <div class="project-meta">
       <div class="meta-item">
-        <span class="meta-label">기간</span>
-        <span class="meta-value">2023.01 (1개월)</span>
+        <span class="meta-label">Type</span>
+        <span class="meta-value">Personal Project</span>
       </div>
       <div class="meta-item">
-        <span class="meta-label">역할</span>
-        <span class="meta-value">프로그래머 인턴</span>
-      </div>
-      <div class="meta-item">
-        <span class="meta-label">기술</span>
-        <span class="meta-value">Unreal Engine 5, C++, Blueprint, Vivox</span>
+        <span class="meta-label">Tech</span>
+        <span class="meta-value">C#, Socket</span>
       </div>
     </div>
   </header>
 
   <section class="overview">
     <p class="description">
-      이전에 구현해 본 적이 있던 Vivox API를 활용해, Unreal Engine 5에서 사용할 수 있는 Vivox Plugin 기반으로 음성 채팅 기능을 구현했습니다. C++로 기능을 구현하고 Blueprint에서도 사용할 수 있도록 확장했습니다.
+      A personal project in which I designed and implemented the core structure of a game server from scratch, built on C# socket communication.
     </p>
   </section>
 
-  <section class="voice-chat">
-    <h2>음성 채팅 기능 구현</h2>
+  <section class="features">
+    <h2>Key Features</h2>
     <ul class="content-list">
-      <li><strong>Volumetric Trigger</strong>를 통해 공간에 PC가 접근하면 공개 음성 채팅 채널에 자동 입장·퇴장</li>
-      <li>상호작용 키로 입장하며 제한 인원수가 정해진 <strong>Private 채널</strong> 구현</li>
-      <li>유저별 <strong>볼륨 조절 및 음소거</strong> 기능 구현</li>
-      <li>C++ 구현부를 <strong>Blueprint에서 사용 가능</strong>하도록 확장</li>
+      <li><strong>Session management</strong></li>
+      <li><strong>Packet serialization</strong></li>
+      <li><strong>Lobby</strong></li>
+      <li><strong>Matchmaking</strong></li>
+      <li><strong>RPC</strong></li>
     </ul>
   </section>
 

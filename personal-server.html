@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>게임 서버 프레임워크 · 개인 프로젝트 - 신석주</title>
+<link rel="alternate" hreflang="ko" href="personal-server.html">
+<link rel="alternate" hreflang="en" href="personal-server.en.html">
+<script src="lang.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -143,6 +146,33 @@
     font-weight:500;
   }
 
+  /* 언어 전환 */
+  .lang-switch{
+    position:fixed;
+    top:16px;
+    right:16px;
+    z-index:10;
+    display:flex;
+    align-items:center;
+    gap:6px;
+    padding:4px 12px;
+    font-size:0.82rem;
+    background:rgba(255,255,255,0.9);
+    border:1px solid var(--line);
+    border-radius:999px;
+  }
+  .lang-switch a{
+    color:var(--text-soft);
+    text-decoration:none;
+    font-weight:500;
+  }
+  .lang-switch a:hover{ color:var(--accent); }
+  .lang-switch a.active{
+    color:var(--accent);
+    font-weight:700;
+  }
+  .lang-switch span{ color:var(--line); }
+
   footer{
     padding:40px 0 80px;
     font-size:0.82rem;
@@ -162,6 +192,7 @@
 <body>
 
 <div class="wrap">
+  <nav class="lang-switch" aria-label="Language"><a href="personal-server.html" hreflang="ko" lang="ko" class="active" aria-current="true">KO</a><span aria-hidden="true">|</span><a href="personal-server.en.html" hreflang="en" lang="en">EN</a></nav>
 
   <header>
     <a href="index.html" class="back-link">← 돌아가기</a>
@@ -180,7 +211,7 @@
 
   <section class="overview">
     <p class="description">
-      C# 소켓 통신을 기반으로 게임 서버에 필요한 기본 구조를 직접 설계하고 구현한 개인 프로젝트입니다.
+      C# 소켓 통신을 기반으로 게임 서버에 필요한 기본 구조를 처음부터 직접 설계하고 구현한 개인 프로젝트입니다.
     </p>
   </section>
 

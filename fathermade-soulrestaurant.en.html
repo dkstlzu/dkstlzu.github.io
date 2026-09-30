@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Soul &amp; Soup · New Development - SeockJu Shin</title>
+<link rel="alternate" hreflang="ko" href="fathermade-soulrestaurant.html">
+<link rel="alternate" hreflang="en" href="fathermade-soulrestaurant.en.html">
+<script src="lang.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#ffffff;
+    --text:#1c1c1c;
+    --text-soft:#6b6b6b;
+    --line:#e4e4e4;
+    --accent:#2f4858;
+    --accent-soft:#eef1f2;
+  }
+  
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{
+    max-width:960px;
+    margin:0 auto;
+    padding:0 40px;
+  }
+
+  /* Header */
+  header{
+    padding:56px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .back-link{
+    display:inline-block;
+    font-size:0.9rem;
+    color:var(--accent);
+    text-decoration:none;
+    margin-bottom:20px;
+  }
+  .back-link:hover{
+    text-decoration:underline;
+  }
+  header h1{
+    font-size:2rem;
+    font-weight:900;
+    margin:0 0 8px;
+    letter-spacing:-0.02em;
+  }
+  .project-meta{
+    display:flex;
+    gap:24px;
+    margin-top:16px;
+    font-size:0.92rem;
+    color:var(--text-soft);
+  }
+  .meta-item{
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+  }
+  .meta-label{
+    font-size:0.82rem;
+    color:var(--text-soft);
+    font-weight:500;
+  }
+  .meta-value{
+    color:var(--text);
+    font-weight:500;
+  }
+
+  /* Content */
+  section{
+    padding:40px 0;
+    border-bottom:1px solid var(--line);
+  }
+  section:last-of-type{
+    border-bottom:none;
+  }
+  section h2{
+    font-size:1.4rem;
+    font-weight:700;
+    color:var(--accent);
+    margin:0 0 24px;
+    letter-spacing:-0.01em;
+  }
+  section h3{
+    font-size:1.1rem;
+    font-weight:700;
+    color:var(--text);
+    margin:28px 0 12px;
+  }
+  section h3:first-of-type{
+    margin-top:0;
+  }
+  .description{
+    font-size:1rem;
+    line-height:1.8;
+    margin-bottom:24px;
+    color:var(--text);
+  }
+
+  .content-list{
+    list-style:disc;
+    margin:0;
+    padding-left:1.2em;
+  }
+  .content-list li{
+    font-size:0.95rem;
+    color:var(--text);
+    padding:6px 0;
+    margin:0;
+  }
+  .content-list li::marker{
+    color:var(--text-soft);
+  }
+  .content-list li strong{
+    color:var(--accent);
+    font-weight:600;
+  }
+
+  /* 순서가 있는 작업 흐름 */
+  .step-list{
+    list-style:none;
+    margin:0;
+    padding:0;
+    counter-reset:step;
+  }
+  .step-list li{
+    position:relative;
+    font-size:0.95rem;
+    padding:6px 0 6px 40px;
+    counter-increment:step;
+  }
+  .step-list li::before{
+    content:counter(step);
+    position:absolute;
+    left:0;
+    top:8px;
+    width:24px;
+    height:24px;
+    border-radius:50%;
+    background:var(--accent);
+    color:#fff;
+    font-size:0.78rem;
+    font-weight:700;
+    line-height:24px;
+    text-align:center;
+  }
+  .step-list li strong{
+    color:var(--accent);
+    font-weight:700;
+  }
+
+  /* 담당 영역 요약 */
+  .scope-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:12px;
+  }
+  .scope-item{
+    display:block;
+    padding:14px 16px;
+    background:var(--accent-soft);
+    border-radius:4px;
+    color:inherit;
+    text-decoration:none;
+  }
+  a.scope-item:hover{
+    box-shadow:inset 0 0 0 1px var(--accent);
+  }
+  .scope-item .label{
+    display:block;
+    font-size:0.82rem;
+    font-weight:700;
+    color:var(--accent);
+    margin-bottom:4px;
+  }
+  .scope-item .value{
+    font-size:0.9rem;
+    color:var(--text);
+    line-height:1.5;
+  }
+
+  /* 파이프라인·설명(왼쪽) + 스크린샷(오른쪽) */
+  .with-shot{
+    display:grid;
+    grid-template-columns:1fr 220px;
+    gap:40px;
+    align-items:start;
+    margin-top:28px;
+  }
+  .shot{
+    display:block;
+  }
+  .shot img{
+    display:block;
+    width:100%;
+    aspect-ratio:1080 / 2340;
+    border-radius:12px;
+    border:1px solid var(--line);
+  }
+  .shot-desc{
+    margin:24px 0 0;
+    font-size:0.95rem;
+    line-height:1.9;
+    color:var(--text);
+  }
+  .shot-desc strong{
+    color:var(--accent);
+    font-weight:600;
+  }
+
+  .meta-value a{
+    color:var(--accent);
+    text-decoration:none;
+  }
+  .meta-value a:hover{
+    text-decoration:underline;
+  }
+
+  .tech-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:16px;
+  }
+  .tech-tag{
+    font-size:0.85rem;
+    padding:6px 12px;
+    background:var(--accent-soft);
+    color:var(--accent);
+    border-radius:3px;
+    font-weight:500;
+  }
+
+  /* 언어 전환 */
+  .lang-switch{
+    position:fixed;
+    top:16px;
+    right:16px;
+    z-index:10;
+    display:flex;
+    align-items:center;
+    gap:6px;
+    padding:4px 12px;
+    font-size:0.82rem;
+    background:rgba(255,255,255,0.9);
+    border:1px solid var(--line);
+    border-radius:999px;
+  }
+  .lang-switch a{
+    color:var(--text-soft);
+    text-decoration:none;
+    font-weight:500;
+  }
+  .lang-switch a:hover{ color:var(--accent); }
+  .lang-switch a.active{
+    color:var(--accent);
+    font-weight:700;
+  }
+  .lang-switch span{ color:var(--line); }
+
+  footer{
+    padding:40px 0 80px;
+    font-size:0.82rem;
+    color:var(--text-soft);
+  }
+
+  @media (max-width:600px){
+    .wrap{ padding:0 20px; }
+    .scope-grid{ grid-template-columns:1fr; }
+    .with-shot{ grid-template-columns:1fr; gap:20px; }
+    .shot{ width:200px; }
+
+    header{ padding:40px 0; }
+    header h1{ font-size:1.6rem; }
+    .project-meta{
+      flex-direction:column;
+      gap:12px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <nav class="lang-switch" aria-label="Language"><a href="fathermade-soulrestaurant.html" hreflang="ko" lang="ko">KO</a><span aria-hidden="true">|</span><a href="fathermade-soulrestaurant.en.html" hreflang="en" lang="en" class="active" aria-current="true">EN</a></nav>
+
+  <header>
+    <a href="index.en.html" class="back-link">← Back</a>
+    <h1>Soul &amp; Soup · New Development</h1>
+    <div class="project-meta">
+      <div class="meta-item">
+        <span class="meta-label">Period</span>
+        <span class="meta-value">2026.01 ~ Present</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Role</span>
+        <span class="meta-value">Client Programmer</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Tech</span>
+        <span class="meta-value">Unity, C#</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Store</span>
+        <span class="meta-value"><a href="https://apps.apple.com/kr/app/id6757134728" target="_blank" rel="noopener">App Store</a> · <a href="https://play.google.com/store/apps/details?id=com.fathermade.merge" target="_blank" rel="noopener">Google Play</a></span>
+      </div>
+    </div>
+  </header>
+
+  <section class="overview">
+    <p class="description">
+      A new project I <strong>started solo with a single reference</strong>, the merge game Gossip Harbor, that <strong>went on to launch and is currently live</strong>.
+      Building on Meow Kingdom's code, utilities and folder structure, I restructured most of the architecture and laid the project's foundation myself, designing it so that teammates who joined later could keep working the way they already did.
+      I <strong>built most of the core systems myself</strong>, from asset management and the rendering foundation to the main logic, out-game, optimization, and SDKs/analytics.
+    </p>
+
+    <div class="scope-grid">
+      <a class="scope-item" href="#architecture"><span class="label">Core Systems</span><span class="value">Introduced Addressable, URP and Input System without disrupting Meow Kingdom's interfaces and coding conventions</span></a>
+      <a class="scope-item" href="#board-pipeline"><span class="label">Main Logic &amp; Pipeline</span><span class="value">PSD → Atlas/Tilemap board generation pipeline</span></a>
+      <a class="scope-item" href="#edit-tool"><span class="label">Out-game · Restaurant</span><span class="value">2.5D world level design tool</span></a>
+      <a class="scope-item" href="#editor-env"><span class="label">Maintenance</span><span class="value">Real-time debugging, improved asset management</span></a>
+      <a class="scope-item" href="#performance"><span class="label">Optimization</span><span class="value">Tweening Animation, Canvas splitting</span></a>
+      <a class="scope-item" href="#sdk"><span class="label">SDKs · Analytics</span><span class="value">NHN GameBase, Firebase, AppsFlyer, Google AdMob, Google Analytics reports</span></a>
+    </div>
+  </section>
+
+  <section class="architecture" id="architecture">
+    <h2>Core Systems</h2>
+    <p class="description">
+      Introduced the Addressable Asset System, Universal Render Pipeline and Input System to the project.
+    </p>
+
+    <h3>Adopting Addressable</h3>
+    <ul class="content-list">
+      <li><strong>Kept the class names and function signatures</strong> used in Meow Kingdom so other teammates could join the work without friction</li>
+      <li>Split assets into <strong>automatically managed</strong> and <strong>manually managed</strong> areas, and proposed and applied a matching project structure</li>
+      <li><strong>Automated asset Address assignment</strong> with editor scripts</li>
+    </ul>
+
+    <h3>Applying URP</h3>
+    <ul class="content-list">
+      <li>Revised <strong>UI Canvas and Camera management</strong> and the Post Processing setup to fit URP</li>
+    </ul>
+
+    <h3>Applying Input System</h3>
+    <ul class="content-list">
+      <li>Handled input across <strong>multiple platforms and input devices</strong></li>
+    </ul>
+  </section>
+
+  <section class="board-pipeline" id="board-pipeline">
+    <h2>Main Logic &amp; Pipeline</h2>
+    <p class="description">
+      Built the foundation for board generation, the game's main logic, using Photoshop scripts, PSD Importer and 2D Tilemap.
+    </p>
+
+    <h3>Design Requirements</h3>
+    <ul class="content-list">
+      <li>To avoid managing many images in a single Sprite Sheet and to ease collaboration with outsourced artists, <strong>keep each icon image as its own Photoshop file</strong></li>
+      <li>Photoshop <strong>effects must carry over without loss</strong></li>
+      <li>Avoid duplicate resources to <strong>keep commits lightweight</strong></li>
+      <li><strong>Easily add and edit item icons</strong> even after launch, without compromising service stability</li>
+      <li><strong>Easily create and edit boards</strong> using items and slots</li>
+    </ul>
+
+    <div class="with-shot">
+      <div class="with-shot-body">
+        <h3>Pipeline</h3>
+        <ol class="step-list">
+          <li><strong>Resource placement</strong> (Art) — After creating icons, place the files in designated folders following the naming rules</li>
+          <li><strong>Photoshop script</strong> (All) — Reads icons from relative paths within the project and regenerates them as Linked Layers</li>
+          <li><strong>PSD Importer</strong> (Automatic) — Automatically generates the Sprite Atlas and Tilemap Assets</li>
+          <li><strong>Tile Palette</strong> (Game Design) — Streamlines board creation with the 2D Tile Palette tool</li>
+        </ol>
+
+        <p class="shot-desc">
+          Each cell of the board <strong>maps to a single Tilemap grid cell</strong> painted with the Tile Palette. Using the Tile Palette's <strong>custom brush feature</strong>, I built an environment where boards are made by stamping prefabs directly onto the grid while seeing the result, while keeping Unity's standard tools such as the Move Tool fully usable, <strong>removing as many workflow constraints as possible.</strong>
+        </p>
+      </div>
+      <a class="shot" href="images/soulrestaurant/main-board.jpg" target="_blank"><img src="images/soulrestaurant/main-board.jpg" alt="Soul &amp; Soup main merge board screen" loading="lazy"></a>
+    </div>
+  </section>
+
+  <section class="edit-tool" id="edit-tool">
+    <h2>Out-game · Restaurant</h2>
+    <p class="description">
+      To develop the restaurant, an out-game element, I built a 2.5D world level design tool that places 2D images in 3D space while keeping the correct sorting order.
+    </p>
+
+    <p class="description">
+      Although the engine provides features such as Sorting Layer, Sorting Order and Sorting Group, I built a tool that slices and places textures so that <strong>images render in the order they appear as placed</strong>, improving efficiency for artists and designers and reducing human error.
+    </p>
+
+    <div class="with-shot">
+      <div class="with-shot-body">
+        <h3>Workflow</h3>
+        <ol class="step-list">
+          <li><strong>Texture slicing</strong> — An editor script automatically slices textures into Multiple Sprites based on camera size, Pixel Reference, world grid size settings and camera angle</li>
+          <li><strong>Pivot setup</strong> — In an extended Sprite Editor tool, set each slice's floor point as its pivot using a GUI tool</li>
+          <li><strong>Placement</strong> — Place images in the Scene View using Handles</li>
+        </ol>
+
+        <p class="shot-desc">
+          Spine animations and regular images placed together in the 2.5D world while <strong>sorting front-to-back naturally</strong>. Each image is actually finely sliced along the vertical axis, but carefully calculated placement logic keeps <strong>the seams between slices invisible to players</strong>, while the development environment also looks identical to the actual game screen.
+          Artists can also <strong>work on the Default Layer at Sorting Order 0</strong> without having to learn Sorting Layer, Sorting Order or Sorting Group, making for an artist-friendly environment.
+        </p>
+      </div>
+      <a class="shot" href="images/soulrestaurant/world.jpg" target="_blank"><img src="images/soulrestaurant/world.jpg" alt="Soul &amp; Soup restaurant world screen" loading="lazy"></a>
+    </div>
+  </section>
+
+  <section class="editor-env" id="editor-env">
+    <h2>Maintenance</h2>
+
+    <h3>Debug-Friendly Development Environment</h3>
+    <p class="description">
+      Building on an understanding of Unity's serialization system, I structured code and implemented systems so that each field's data can be easily inspected in real time in the Editor, without affecting player builds.
+    </p>
+    <ul class="content-list">
+      <li><strong>No impact on performance, memory or build size</strong> of player builds</li>
+      <li><strong>Inspect each field's data in real time</strong> in the Editor</li>
+      <li><strong>Leveraged built-in engine systems as much as possible</strong> to reduce the maintenance burden of writing a custom Editor script for every feature</li>
+    </ul>
+
+    <h3>Asset Management Tool</h3>
+    <ul class="content-list">
+      <li>Built a tool that traverses key assets and prefabs to <strong>look up References in use and key field values</strong></li>
+      <li>Enables <strong>identifying texture files in use, looking up localization keys, handling Missing Components, understanding UI structure and finding effect objects</strong>, among others</li>
+    </ul>
+  </section>
+
+  <section class="performance" id="performance">
+    <h2>Optimization</h2>
+    <ul class="content-list">
+      <li>Avoided Animator for UI performance and <strong>implemented Tweening Animation</strong></li>
+      <li>UI that needs Animator for ease of authoring is <strong>split into separate canvases</strong> as needed to minimize the scope of Canvas rebuilds</li>
+      <li><strong>Minimized MonoBehaviour usage</strong></li>
+      <li><strong>Manually controlled physics world Update timing</strong></li>
+      <li><strong>Simplified the Hierarchy</strong> of key objects</li>
+    </ul>
+  </section>
+
+  <section class="sdk" id="sdk">
+    <h2>SDKs · Analytics</h2>
+    <p class="description">
+      Upgraded various SDKs for the new Unity version and cleaned up their initialization process and timing.
+    </p>
+    <div class="tech-tags">
+      <span class="tech-tag">NHN GameBase</span>
+      <span class="tech-tag">Firebase</span>
+      <span class="tech-tag">AppsFlyer</span>
+      <span class="tech-tag">Google AdMob</span>
+    </div>
+
+    <h3 style="margin-top:28px;">Improved Analytics Collection</h3>
+    <ul class="content-list">
+      <li><strong>Improved how Firebase Analytics metrics are collected</strong></li>
+      <li><strong>Set up Google Analytics reports</strong> so teammates could check them directly</li>
+      <li>Built a <strong>Google API desktop app to avoid Data Sampling</strong> that collects data for a chosen range day by day and automatically restructures it, making metric analysis easier</li>
+    </ul>
+  </section>
+
+  <footer>
+    © 2026 SeockJu Shin
+  </footer>
+
+</div>
+
+</body>
+</html>

@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>영혼식당 · 신규 개발 - 신석주</title>
+<link rel="alternate" hreflang="ko" href="fathermade-soulrestaurant.html">
+<link rel="alternate" hreflang="en" href="fathermade-soulrestaurant.en.html">
+<script src="lang.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -241,6 +244,33 @@
     font-weight:500;
   }
 
+  /* 언어 전환 */
+  .lang-switch{
+    position:fixed;
+    top:16px;
+    right:16px;
+    z-index:10;
+    display:flex;
+    align-items:center;
+    gap:6px;
+    padding:4px 12px;
+    font-size:0.82rem;
+    background:rgba(255,255,255,0.9);
+    border:1px solid var(--line);
+    border-radius:999px;
+  }
+  .lang-switch a{
+    color:var(--text-soft);
+    text-decoration:none;
+    font-weight:500;
+  }
+  .lang-switch a:hover{ color:var(--accent); }
+  .lang-switch a.active{
+    color:var(--accent);
+    font-weight:700;
+  }
+  .lang-switch span{ color:var(--line); }
+
   footer{
     padding:40px 0 80px;
     font-size:0.82rem;
@@ -265,6 +295,7 @@
 <body>
 
 <div class="wrap">
+  <nav class="lang-switch" aria-label="Language"><a href="fathermade-soulrestaurant.html" hreflang="ko" lang="ko" class="active" aria-current="true">KO</a><span aria-hidden="true">|</span><a href="fathermade-soulrestaurant.en.html" hreflang="en" lang="en">EN</a></nav>
 
   <header>
     <a href="index.html" class="back-link">← 돌아가기</a>
@@ -298,11 +329,11 @@
 
     <div class="scope-grid">
       <a class="scope-item" href="#architecture"><span class="label">기반 시스템 구축</span><span class="value">냥킹덤의 인터페이스·코드 작업 방식을 해치지 않는 선에서 Addressable, URP, Input System 도입</span></a>
-      <a class="scope-item" href="#board-pipeline"><span class="label">메인 로직 및 구현 파이프라인</span><span class="value">PSD → Atlas/TileMap 보드 생성 파이프라인</span></a>
+      <a class="scope-item" href="#board-pipeline"><span class="label">메인 로직 및 구현 파이프라인</span><span class="value">PSD → Atlas/Tilemap 보드 생성 파이프라인</span></a>
       <a class="scope-item" href="#edit-tool"><span class="label">아웃게임 · 식당</span><span class="value">2.5D 월드 레벨디자인 툴</span></a>
       <a class="scope-item" href="#editor-env"><span class="label">유지 관리 보수</span><span class="value">실시간 디버깅, 에셋 관리 개선</span></a>
       <a class="scope-item" href="#performance"><span class="label">최적화</span><span class="value">Tweening Animation, Canvas 분리</span></a>
-      <a class="scope-item" href="#sdk"><span class="label">SDK · 지표</span><span class="value">GameBase, Firebase, AppsFlyer, AdMob, Google Analytics 보고서</span></a>
+      <a class="scope-item" href="#sdk"><span class="label">SDK · 지표</span><span class="value">NHN GameBase, Firebase, AppsFlyer, Google AdMob, Google Analytics 보고서</span></a>
     </div>
   </section>
 
@@ -333,7 +364,7 @@
   <section class="board-pipeline" id="board-pipeline">
     <h2>메인 로직 및 구현 파이프라인</h2>
     <p class="description">
-      Photoshop script, PSD Importer, 2D TileMap 기능을 활용해 게임의 메인 로직인 보드판 생성 기반을 마련했습니다.
+      Photoshop script, PSD Importer, 2D Tilemap 기능을 활용해 게임의 메인 로직인 보드판 생성 기반을 마련했습니다.
     </p>
 
     <h3>설계 요구사항</h3>
@@ -351,12 +382,12 @@
         <ol class="step-list">
           <li><strong>리소스 배치</strong> (아트) — 아이콘 작업 후 정해진 폴더에 규칙에 맞는 이름으로 파일 배치</li>
           <li><strong>Photoshop script</strong> (전체) — 프로젝트 내 상대경로에서 아이콘을 읽어와 Linked Layer로 레이어 재생성</li>
-          <li><strong>PSD Importer</strong> (자동) — Sprite Atlas 및 TileMap Asset 자동 생성</li>
+          <li><strong>PSD Importer</strong> (자동) — Sprite Atlas 및 Tilemap Asset 자동 생성</li>
           <li><strong>Tile Palette</strong> (기획) — 2D Tile Palette 툴을 이용해 보드 제작 과정 간소화</li>
         </ol>
 
         <p class="shot-desc">
-          보드의 각 칸은 Tile Palette로 그려지는 <strong>TileMap 격자 한 칸에 대응</strong>합니다. Tile Palette의 <strong>커스텀 브러시 기능</strong>을 활용해 눈으로 보면서 프리팹을 격자에 직접 찍어 보드를 만들 수 있는 환경을 구축했고, 동시에 Unity 기본 Move Tool 등도 그대로 유연하게 쓸 수 있도록 해 <strong>작업 환경의 제약을 최대한 없앴습니다.</strong>
+          보드의 각 칸은 Tile Palette로 그려지는 <strong>Tilemap 격자 한 칸에 대응</strong>합니다. Tile Palette의 <strong>커스텀 브러시 기능</strong>을 활용해 눈으로 보면서 프리팹을 격자에 직접 찍어 보드를 만들 수 있는 환경을 구축했고, 동시에 Unity 기본 Move Tool 등도 그대로 유연하게 쓸 수 있도록 해 <strong>작업 환경의 제약을 최대한 없앴습니다.</strong>
         </p>
       </div>
       <a class="shot" href="images/soulrestaurant/main-board.jpg" target="_blank"><img src="images/soulrestaurant/main-board.jpg" alt="영혼식당 메인 머지 보드 화면" loading="lazy"></a>
