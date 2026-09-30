@@ -189,6 +189,35 @@
     line-height:1.5;
   }
 
+  /* 파이프라인·설명(왼쪽) + 스크린샷(오른쪽) */
+  .with-shot{
+    display:grid;
+    grid-template-columns:1fr 220px;
+    gap:40px;
+    align-items:start;
+    margin-top:28px;
+  }
+  .shot{
+    display:block;
+  }
+  .shot img{
+    display:block;
+    width:100%;
+    aspect-ratio:1080 / 2340;
+    border-radius:12px;
+    border:1px solid var(--line);
+  }
+  .shot-desc{
+    margin:24px 0 0;
+    font-size:0.95rem;
+    line-height:1.9;
+    color:var(--text);
+  }
+  .shot-desc strong{
+    color:var(--accent);
+    font-weight:600;
+  }
+
   .meta-value a{
     color:var(--accent);
     text-decoration:none;
@@ -221,6 +250,9 @@
   @media (max-width:600px){
     .wrap{ padding:0 20px; }
     .scope-grid{ grid-template-columns:1fr; }
+    .with-shot{ grid-template-columns:1fr; gap:20px; }
+    .shot{ width:200px; }
+
     header{ padding:40px 0; }
     header h1{ font-size:1.6rem; }
     .project-meta{
@@ -313,13 +345,22 @@
       <li>아이템과 슬롯을 이용해 <strong>보드판을 쉽게 생성·수정</strong>할 수 있을 것</li>
     </ul>
 
-    <h3>파이프라인</h3>
-    <ol class="step-list">
-      <li><strong>리소스 배치</strong> (아트) — 아이콘 작업 후 정해진 폴더에 규칙에 맞는 이름으로 파일 배치</li>
-      <li><strong>Photoshop script</strong> (전체) — 프로젝트 내 상대경로에서 아이콘을 읽어와 Linked Layer로 레이어 재생성</li>
-      <li><strong>PSD Importer</strong> (자동) — Sprite Atlas 및 TileMap Asset 자동 생성</li>
-      <li><strong>Tile Palette</strong> (기획) — 2D Tile Palette 툴을 이용해 보드 제작 과정 간소화</li>
-    </ol>
+    <div class="with-shot">
+      <div class="with-shot-body">
+        <h3>파이프라인</h3>
+        <ol class="step-list">
+          <li><strong>리소스 배치</strong> (아트) — 아이콘 작업 후 정해진 폴더에 규칙에 맞는 이름으로 파일 배치</li>
+          <li><strong>Photoshop script</strong> (전체) — 프로젝트 내 상대경로에서 아이콘을 읽어와 Linked Layer로 레이어 재생성</li>
+          <li><strong>PSD Importer</strong> (자동) — Sprite Atlas 및 TileMap Asset 자동 생성</li>
+          <li><strong>Tile Palette</strong> (기획) — 2D Tile Palette 툴을 이용해 보드 제작 과정 간소화</li>
+        </ol>
+
+        <p class="shot-desc">
+          보드의 각 칸은 Tile Palette로 그려지는 <strong>TileMap 격자 한 칸에 대응</strong>합니다. Tile Palette의 <strong>커스텀 브러시 기능</strong>을 활용해 눈으로 보면서 프리팹을 격자에 직접 찍어 보드를 만들 수 있는 환경을 구축했고, 동시에 Unity 기본 Move Tool 등도 그대로 유연하게 쓸 수 있도록 해 <strong>작업 환경의 제약을 최대한 없앴습니다.</strong>
+        </p>
+      </div>
+      <a class="shot" href="images/soulrestaurant/main-board.jpg" target="_blank"><img src="images/soulrestaurant/main-board.jpg" alt="영혼식당 메인 머지 보드 화면" loading="lazy"></a>
+    </div>
   </section>
 
   <section class="edit-tool" id="edit-tool">
@@ -332,12 +373,22 @@
       엔진이 Sorting Layer, Sorting Order, Sorting Group 등 다양한 기능을 제공하지만, 아트·기획 담당자의 작업 효율을 높이고 휴먼 에러를 줄이기 위해 <strong>보이는 대로 배치하면 보이는 순서대로 렌더링</strong>되도록 텍스처를 자르고 배치하는 툴을 제작했습니다.
     </p>
 
-    <h3>작업 프로세스</h3>
-    <ol class="step-list">
-      <li><strong>텍스처 분할</strong> — 에디터 스크립트를 통해 카메라 사이즈, Pixel Reference, 월드 격자 크기 설정값, 카메라 각도에 따라 자동으로 Multiple Sprite로 자르기</li>
-      <li><strong>Pivot 설정</strong> — Sprite Editor 확장 툴에서 각 조각의 바닥 지점을 GUI 툴을 통해 pivot으로 지정</li>
-      <li><strong>배치</strong> — Scene View에서 Handle을 통해 이미지 배치</li>
-    </ol>
+    <div class="with-shot">
+      <div class="with-shot-body">
+        <h3>작업 프로세스</h3>
+        <ol class="step-list">
+          <li><strong>텍스처 분할</strong> — 에디터 스크립트를 통해 카메라 사이즈, Pixel Reference, 월드 격자 크기 설정값, 카메라 각도에 따라 자동으로 Multiple Sprite로 자르기</li>
+          <li><strong>Pivot 설정</strong> — Sprite Editor 확장 툴에서 각 조각의 바닥 지점을 GUI 툴을 통해 pivot으로 지정</li>
+          <li><strong>배치</strong> — Scene View에서 Handle을 통해 이미지 배치</li>
+        </ol>
+
+        <p class="shot-desc">
+          Spine 애니메이션과 일반 이미지가 2.5D 월드에 함께 배치되면서도 <strong>자연스럽게 앞뒤 정렬</strong>되는 모습입니다. 실제로는 각 이미지가 위아래 방향으로 잘게 슬라이스되어 있지만, 철저히 계산된 배치 로직으로 <strong>조각 사이의 틈새가 유저에게는 보이지 않으면서도</strong> 개발 환경에서도 실제 게임 화면과 동일하게 보이도록 했습니다.
+          또한 Sorting Layer, Sorting Order, Sorting Group 등을 익힐 필요 없이 <strong>기본 Default Layer의 Sorting Order 0 그대로 작업</strong>할 수 있도록 해, 아트 작업자 친화적인 환경을 만들었습니다.
+        </p>
+      </div>
+      <a class="shot" href="images/soulrestaurant/world.jpg" target="_blank"><img src="images/soulrestaurant/world.jpg" alt="영혼식당 식당 월드 화면" loading="lazy"></a>
+    </div>
   </section>
 
   <section class="editor-env" id="editor-env">
@@ -356,6 +407,7 @@
     <h3>에셋 관리 툴</h3>
     <ul class="content-list">
       <li>주요 에셋·프리팹을 순회하여 <strong>사용 중인 Reference 및 주요 필드 값을 조회</strong>할 수 있는 툴 제작</li>
+      <li>이를 통해 <strong>사용 중인 텍스처 파일 식별, 다국어 키 조회, Missing Component 처리, UI 구조 파악, 이펙트 오브젝트 조회</strong> 등이 가능</li>
     </ul>
   </section>
 

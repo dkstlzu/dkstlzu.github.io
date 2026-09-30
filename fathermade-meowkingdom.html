@@ -228,7 +228,36 @@
     color:var(--text-soft);
   }
 
+  /* 인게임 스크린샷 */
+  .shots{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:16px;
+    margin-top:28px;
+  }
+  .shots figure{
+    margin:0;
+  }
+  .shots img{
+    display:block;
+    width:100%;
+    aspect-ratio:1080 / 2340;
+    object-fit:cover;
+    border-radius:12px;
+    border:1px solid var(--line);
+  }
+  .shots figcaption{
+    margin-top:8px;
+    font-size:0.85rem;
+    color:var(--text-soft);
+    text-align:center;
+  }
+
   @media (max-width:600px){
+    .shots{
+      grid-template-columns:repeat(2, 1fr);
+      gap:8px;
+    }
     header{ padding:40px 0; }
     header h1{ font-size:1.6rem; }
     .project-meta{
@@ -313,6 +342,17 @@
       <li><span class="base-tag">프로필</span><span><strong>프로필 다중 슬롯, 편집, 업로드 기능</strong> 제안 및 구현</span></li>
       <li><span class="base-tag">글로벌 채팅</span><span><strong>개인 메시징 시스템</strong> 제안 및 구축</span></li>
     </ul>
+
+    <div class="shots">
+      <figure>
+        <a href="images/meowkingdom/master-arena.jpg" target="_blank"><img src="images/meowkingdom/master-arena.jpg" alt="냥킹덤 마스터 아레나 전투 결과 화면" loading="lazy"></a>
+        <figcaption>마스터 아레나</figcaption>
+      </figure>
+      <figure>
+        <a href="images/meowkingdom/transcendent-equipment.jpg" target="_blank"><img src="images/meowkingdom/transcendent-equipment.jpg" alt="냥킹덤 초월 장비 화면" loading="lazy"></a>
+        <figcaption>초월 장비</figcaption>
+      </figure>
+    </div>
   </section>
 
   <section class="live-content">
@@ -323,6 +363,25 @@
       <li><span class="base-tag">BM</span><span>BM 개선을 위한 수십 종의 <strong>패키지 상품</strong> 구현</span></li>
       <li><span class="base-tag">UI/UX</span><span>UI/UX 개선 작업</span></li>
     </ul>
+
+    <div class="shots">
+      <figure>
+        <a href="images/meowkingdom/friend-invite.jpg" target="_blank"><img src="images/meowkingdom/friend-invite.jpg" alt="냥킹덤 친구 초대 이벤트 화면" loading="lazy"></a>
+        <figcaption>친구 초대 이벤트</figcaption>
+      </figure>
+      <figure>
+        <a href="images/meowkingdom/minigame.jpg" target="_blank"><img src="images/meowkingdom/minigame.jpg" alt="냥킹덤 주사위 여행 미니게임 화면" loading="lazy"></a>
+        <figcaption>부르마블 미니게임</figcaption>
+      </figure>
+      <figure>
+        <a href="images/meowkingdom/monster-hide-and-seek.jpg" target="_blank"><img src="images/meowkingdom/monster-hide-and-seek.jpg" alt="냥킹덤 마을 몬스터 숨바꼭질 화면" loading="lazy"></a>
+        <figcaption>몬스터 숨바꼭질</figcaption>
+      </figure>
+      <figure>
+        <a href="images/meowkingdom/step-up-package.jpg" target="_blank"><img src="images/meowkingdom/step-up-package.jpg" alt="냥킹덤 주간 스텝업 패키지 화면" loading="lazy"></a>
+        <figcaption>패키지 상품</figcaption>
+      </figure>
+    </div>
   </section>
 
   <section class="optimization">
