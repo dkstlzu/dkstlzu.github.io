@@ -100,13 +100,6 @@
   section h3:first-of-type{
     margin-top:0;
   }
-  section h4{
-    font-size:0.95rem;
-    font-weight:600;
-    color:var(--text);
-    margin:16px 0 8px;
-  }
-
   .description{
     font-size:1rem;
     line-height:1.8;
@@ -115,48 +108,93 @@
   }
 
   .content-list{
-    list-style:none;
+    list-style:disc;
     margin:0;
-    padding:0;
+    padding-left:1.2em;
   }
   .content-list li{
     font-size:0.95rem;
     color:var(--text);
-    padding:12px 0 12px 24px;
-    border-left:3px solid var(--accent-soft);
+    padding:6px 0;
     margin:0;
   }
-  .content-list li:first-child{
-    padding-top:0;
+  .content-list li::marker{
+    color:var(--text-soft);
   }
   .content-list li strong{
     color:var(--accent);
     font-weight:600;
   }
 
-  .sub-list{
-    margin:12px 0 0 24px;
-    padding:0;
+  /* 순서가 있는 작업 흐름 */
+  .step-list{
     list-style:none;
+    margin:0;
+    padding:0;
+    counter-reset:step;
   }
-  .sub-list li{
-    font-size:0.9rem;
-    color:var(--text);
-    padding:8px 0 8px 12px;
-    border-left:2px solid var(--line);
+  .step-list li{
+    position:relative;
+    font-size:0.95rem;
+    padding:6px 0 6px 40px;
+    counter-increment:step;
+  }
+  .step-list li::before{
+    content:counter(step);
+    position:absolute;
+    left:0;
+    top:8px;
+    width:24px;
+    height:24px;
+    border-radius:50%;
+    background:var(--accent);
+    color:#fff;
+    font-size:0.78rem;
+    font-weight:700;
+    line-height:24px;
+    text-align:center;
+  }
+  .step-list li strong{
+    color:var(--accent);
+    font-weight:700;
   }
 
-  .highlight-box{
-    background:var(--accent-soft);
-    padding:16px 20px;
-    border-left:4px solid var(--accent);
-    border-radius:2px;
-    margin:20px 0;
+  /* 담당 영역 요약 */
+  .scope-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:12px;
   }
-  .highlight-box p{
-    margin:0;
-    font-size:0.95rem;
+  .scope-item{
+    display:block;
+    padding:14px 16px;
+    background:var(--accent-soft);
+    border-radius:4px;
+    color:inherit;
+    text-decoration:none;
+  }
+  a.scope-item:hover{
+    box-shadow:inset 0 0 0 1px var(--accent);
+  }
+  .scope-item .label{
+    display:block;
+    font-size:0.82rem;
+    font-weight:700;
+    color:var(--accent);
+    margin-bottom:4px;
+  }
+  .scope-item .value{
+    font-size:0.9rem;
     color:var(--text);
+    line-height:1.5;
+  }
+
+  .meta-value a{
+    color:var(--accent);
+    text-decoration:none;
+  }
+  .meta-value a:hover{
+    text-decoration:underline;
   }
 
   .tech-tags{
@@ -181,6 +219,8 @@
   }
 
   @media (max-width:600px){
+    .wrap{ padding:0 20px; }
+    .scope-grid{ grid-template-columns:1fr; }
     header{ padding:40px 0; }
     header h1{ font-size:1.6rem; }
     .project-meta{
@@ -210,115 +250,143 @@
         <span class="meta-label">기술</span>
         <span class="meta-value">Unity, C#</span>
       </div>
+      <div class="meta-item">
+        <span class="meta-label">스토어</span>
+        <span class="meta-value"><a href="https://apps.apple.com/kr/app/id6757134728" target="_blank" rel="noopener">App Store</a> · <a href="https://play.google.com/store/apps/details?id=com.fathermade.merge" target="_blank" rel="noopener">Google Play</a></span>
+      </div>
     </div>
   </header>
 
   <section class="overview">
     <p class="description">
-      냥킹덤의 주요 코드, 유틸리티 기능, 프로젝트 폴더 구조 등 주요 부분을 기반으로 대부분의 코드 및 구조를 재구성하고 개선하여 시작한 신규 프로젝트입니다. 머지게임(가십하버)를 레퍼런스로 잡고 단일로 먼저 시작했습니다.
+      머지게임(가십하버) <strong>레퍼런스 하나만 가지고 혼자 착수</strong>한 신규 프로젝트로, <strong>실제 출시까지 이어져 현재 서비스 중</strong>입니다.
+      냥킹덤의 코드·유틸리티·폴더 구조를 기반으로 대부분의 구조를 재구성해 프로젝트의 뼈대를 직접 세웠고, 이후 합류한 팀원들이 기존 방식 그대로 작업을 이어갈 수 있도록 설계했습니다.
+      에셋 관리와 렌더링 기반부터 메인 로직, 아웃게임, 최적화, SDK·지표까지 <strong>주요 시스템 전반을 직접 구축</strong>했습니다.
     </p>
+
+    <div class="scope-grid">
+      <a class="scope-item" href="#architecture"><span class="label">기반 시스템 구축</span><span class="value">냥킹덤의 인터페이스·코드 작업 방식을 해치지 않는 선에서 Addressable, URP, Input System 도입</span></a>
+      <a class="scope-item" href="#board-pipeline"><span class="label">메인 로직 및 구현 파이프라인</span><span class="value">PSD → Atlas/TileMap 보드 생성 파이프라인</span></a>
+      <a class="scope-item" href="#edit-tool"><span class="label">아웃게임 · 식당</span><span class="value">2.5D 월드 레벨디자인 툴</span></a>
+      <a class="scope-item" href="#editor-env"><span class="label">유지 관리 보수</span><span class="value">실시간 디버깅, 에셋 관리 개선</span></a>
+      <a class="scope-item" href="#performance"><span class="label">최적화</span><span class="value">Tweening Animation, Canvas 분리</span></a>
+      <a class="scope-item" href="#sdk"><span class="label">SDK · 지표</span><span class="value">GameBase, Firebase, AppsFlyer, AdMob, Google Analytics 보고서</span></a>
+    </div>
   </section>
 
-  <section class="architecture">
-    <h2>프로젝트 초기 아키텍처 설계</h2>
+  <section class="architecture" id="architecture">
+    <h2>기반 시스템 구축</h2>
     <p class="description">
-      Addressable Asset System, Universal Render Pipeline, Input System을 프로젝트에 적용했습니다.
+      Addressable Asset System, Universal Render Pipeline, Input System을 프로젝트에 도입했습니다.
     </p>
-    
+
     <h3>Addressable 도입</h3>
     <ul class="content-list">
-      <li>냥킹덤에서 사용되던 <strong>클래스 이름, 함수 시그니처를 유지</strong>하여 다른 팀원들의 작업 합류에 무리가 없도록 주의</li>
-      <li>에셋을 <strong>자동으로 관리될 영역</strong>과 <strong>수동으로 관리될 영역</strong>으로 분리</li>
-      <li>이에 따른 프로젝트 구조 제시 및 적용</li>
+      <li>냥킹덤에서 쓰던 <strong>클래스 이름·함수 시그니처를 유지</strong>해 다른 팀원들이 무리 없이 작업에 합류할 수 있도록 함</li>
+      <li>에셋을 <strong>자동 관리 영역</strong>과 <strong>수동 관리 영역</strong>으로 분리하고, 이에 맞는 프로젝트 구조를 제시·적용</li>
+      <li>에디터 스크립트로 <strong>에셋의 Address를 자동 세팅</strong></li>
     </ul>
 
     <h3>URP 적용</h3>
     <ul class="content-list">
-      <li>UI Canvas, Camera 관리 방식 수정</li>
-      <li>Post Processing 적용 방식 수정</li>
+      <li>URP 적용에 맞춰 <strong>UI Canvas, Camera 관리 방식</strong>과 Post Processing 적용 방식 수정</li>
     </ul>
 
-    <h3>Input System</h3>
+    <h3>Input System 적용</h3>
     <ul class="content-list">
-      <li>여러 플랫폼, 여러 인풋 디바이스에서의 입력 처리</li>
+      <li><strong>여러 플랫폼·입력 디바이스</strong>의 입력 처리</li>
     </ul>
   </section>
 
-  <section class="board-pipeline">
-    <h2>보드 생성 파이프라인 자동화</h2>
+  <section class="board-pipeline" id="board-pipeline">
+    <h2>메인 로직 및 구현 파이프라인</h2>
     <p class="description">
       Photoshop script, PSD Importer, 2D TileMap 기능을 활용해 게임의 메인 로직인 보드판 생성 기반을 마련했습니다.
     </p>
 
     <h3>설계 요구사항</h3>
     <ul class="content-list">
-      <li>여러 이미지를 하나의 파일에 Sprite Sheet 방식으로 관리하는 부담 제거 및 외주 작업자와의 편의성 고려하여 각 아이콘 이미지 파일은 <strong>단일 포토샵 파일로 유지</strong></li>
-      <li>포토샵 특수효과가 <strong>사라지지 않고 잘 적용</strong>될 수 있도록</li>
-      <li>과도한 용량 중복을 피해 <strong>커밋을 가볍게 유지</strong></li>
-      <li>출시 이후 <strong>편리하게 아이템 아이콘을 추가 및 수정</strong>하면서도 이 과정에서 서비스 안정성을 해치지 않도록</li>
-      <li>각 아이템 및 슬롯을 이용해 <strong>보드판을 새로 생성하거나 수정하는 과정이 편리</strong>해지도록</li>
+      <li>여러 이미지를 Sprite Sheet 한 파일로 관리하는 부담을 없애고 외주 작업자와의 협업을 고려해, 아이콘 이미지는 <strong>각각 단일 포토샵 파일로 유지</strong></li>
+      <li>포토샵 <strong>특수효과가 손실 없이</strong> 그대로 적용될 것</li>
+      <li>리소스 중복을 피해 <strong>커밋 용량을 가볍게 유지</strong></li>
+      <li>출시 이후에도 <strong>아이템 아이콘을 쉽게 추가·수정</strong>하되, 그 과정에서 서비스 안정성을 해치지 않을 것</li>
+      <li>아이템과 슬롯을 이용해 <strong>보드판을 쉽게 생성·수정</strong>할 수 있을 것</li>
     </ul>
 
-    <h3>구현 프로세스</h3>
-    <ol class="content-list" style="list-style:decimal; padding-left:40px;">
-      <li style="border:none; padding:8px 0 8px 12px;">아이콘 리소스 작업 - 알맞은 폴더 내에 알맞은 이름으로 파일 배치</li>
-      <li style="border:none; padding:8px 0 8px 12px;">Photoshop script를 통해 프로젝트 구조 내의 상대경로에서 아이콘을 긁어와 Linked로 파일을 레이어 재생성</li>
-      <li style="border:none; padding:8px 0 8px 12px;">PSD Importer를 통해 Sprite Atlas 및 TileMap Asset 자동 생성</li>
-      <li style="border:none; padding:8px 0 8px 12px;">에디터 스크립트를 통해 각 아이콘의 Address 세팅</li>
+    <h3>파이프라인</h3>
+    <ol class="step-list">
+      <li><strong>리소스 배치</strong> (아트) — 아이콘 작업 후 정해진 폴더에 규칙에 맞는 이름으로 파일 배치</li>
+      <li><strong>Photoshop script</strong> (전체) — 프로젝트 내 상대경로에서 아이콘을 읽어와 Linked Layer로 레이어 재생성</li>
+      <li><strong>PSD Importer</strong> (자동) — Sprite Atlas 및 TileMap Asset 자동 생성</li>
+      <li><strong>Tile Palette</strong> (기획) — 2D Tile Palette 툴을 이용해 보드 제작 과정 간소화</li>
     </ol>
   </section>
 
-  <section class="edit-tool">
-    <h2>2.5D 월드 레벨디자인 툴</h2>
+  <section class="edit-tool" id="edit-tool">
+    <h2>아웃게임 · 식당</h2>
     <p class="description">
-      아웃 게임 요소인 식당을 개발하기 위해 3D 공간에 2D 이미지를 적절한 정렬순서를 유지하며 배치할 수 있는 2.5D 월드 레벨디자인 툴을 구현했습니다.
+      아웃게임 요소인 식당을 개발하기 위해, 3D 공간에 2D 이미지를 올바른 정렬 순서를 유지하며 배치할 수 있는 2.5D 월드 레벨디자인 툴을 구현했습니다.
     </p>
 
     <p class="description">
-      엔진에서 Sorting Layer, Sorting Order, Sorting Group 등 다양한 옵션 및 기능을 제공하지만, 아트 및 기획자분들의 작업 효율 및 휴먼에러를 줄이기 위해 <strong>보면서 보이는 대로 배치하면 보이는 순서대로 렌더링</strong>될 수 있도록 텍스쳐를 자르고 배치하는 툴을 제작했습니다.
+      엔진이 Sorting Layer, Sorting Order, Sorting Group 등 다양한 기능을 제공하지만, 아트·기획 담당자의 작업 효율을 높이고 휴먼 에러를 줄이기 위해 <strong>보이는 대로 배치하면 보이는 순서대로 렌더링</strong>되도록 텍스처를 자르고 배치하는 툴을 제작했습니다.
     </p>
 
     <h3>작업 프로세스</h3>
-    <ul class="content-list">
-      <li>해당 텍스쳐 우클릭 메뉴를 통해 에디터 스크립트 실행하여 이미지 Multi mode sprite로 자르기</li>
-      <li>Sprite Editor의 확장 툴에서 바닥에 해당하는 pivot 설정</li>
-      <li>Scene View에서 Handle을 통한 이미지 배치</li>
-    </ul>
+    <ol class="step-list">
+      <li><strong>텍스처 분할</strong> — 에디터 스크립트를 통해 카메라 사이즈, Pixel Reference, 월드 격자 크기 설정값, 카메라 각도에 따라 자동으로 Multiple Sprite로 자르기</li>
+      <li><strong>Pivot 설정</strong> — Sprite Editor 확장 툴에서 각 조각의 바닥 지점을 GUI 툴을 통해 pivot으로 지정</li>
+      <li><strong>배치</strong> — Scene View에서 Handle을 통해 이미지 배치</li>
+    </ol>
   </section>
 
-  <section class="performance">
-    <h2>성능 최적화</h2>
+  <section class="editor-env" id="editor-env">
+    <h2>유지 관리 보수</h2>
 
-    <h3>애니메이션 성능</h3>
-    <ul class="content-list">
-      <li><strong>DOTween 패키지 도입</strong>하여 연출 성능 향상</li>
-    </ul>
-
-    <h3>UI Canvas 최적화</h3>
-    <ul class="content-list">
-      <li>UI 요소에 사용되는 Animator <strong>지양</strong></li>
-      <li>필요한 경우 <strong>독립 캔버스로 분리</strong>하는 등 UI 기능 최적화</li>
-    </ul>
-  </section>
-
-  <section class="sdk">
-    <h2>SDK 업그레이드 및 분석 체계 구축</h2>
+    <h3>디버깅이 편한 개발 환경 구축</h3>
     <p class="description">
-      변경된 Unity 버전에 맞게 각종 SDK를 업그레이드하고 초기화 과정 및 시점을 다듬었습니다.
+      Unity Serialization 시스템에 대한 이해를 토대로, 플레이어 빌드에는 영향을 주지 않으면서 Editor에서는 각 필드 정보를 실시간으로 쉽게 확인할 수 있는 구조로 코드를 작성하고 시스템을 구현했습니다.
     </p>
-
-    <h3>적용 SDK</h3>
     <ul class="content-list">
-      <li>NHN GameBase</li>
-      <li>Firebase</li>
-      <li>AppsFlyer</li>
-      <li>Google AdMob</li>
+      <li>플레이어 빌드의 <strong>성능·메모리·빌드 크기에 영향 없음</strong></li>
+      <li>Editor에서 <strong>각 필드 정보를 실시간으로 확인</strong> 가능</li>
+      <li>기능마다 Editor 스크립트를 일일이 작성해야 하는 유지보수 부담을 줄이기 위해 <strong>기본 엔진 시스템을 최대한 활용</strong></li>
     </ul>
 
-    <h3>Firebase Analytics 개선</h3>
+    <h3>에셋 관리 툴</h3>
     <ul class="content-list">
-      <li>Firebase Analytics 지표 수집 방식 개선</li>
-      <li>팀원들이 볼 수 있도록 GA 보고서 세팅</li>
+      <li>주요 에셋·프리팹을 순회하여 <strong>사용 중인 Reference 및 주요 필드 값을 조회</strong>할 수 있는 툴 제작</li>
+    </ul>
+  </section>
+
+  <section class="performance" id="performance">
+    <h2>최적화</h2>
+    <ul class="content-list">
+      <li>UI 성능을 위해 Animator 사용을 지양하고 <strong>Tweening Animation 구현</strong></li>
+      <li>작업 편의상 Animator 사용이 필요한 UI는 정도에 따라 <strong>독립 캔버스로 분리</strong>해 Canvas 리빌드 범위 최소화</li>
+      <li><strong>MonoBehaviour 사용 최소화</strong></li>
+      <li><strong>물리 월드 Update 시점 직접 관리</strong></li>
+      <li>주요 오브젝트 <strong>Hierarchy 간소화</strong></li>
+    </ul>
+  </section>
+
+  <section class="sdk" id="sdk">
+    <h2>SDK · 지표</h2>
+    <p class="description">
+      변경된 Unity 버전에 맞게 각종 SDK를 업그레이드하고 초기화 과정과 시점을 정리했습니다.
+    </p>
+    <div class="tech-tags">
+      <span class="tech-tag">NHN GameBase</span>
+      <span class="tech-tag">Firebase</span>
+      <span class="tech-tag">AppsFlyer</span>
+      <span class="tech-tag">Google AdMob</span>
+    </div>
+
+    <h3 style="margin-top:28px;">지표 수집 개선</h3>
+    <ul class="content-list">
+      <li>Firebase Analytics <strong>지표 수집 방식 개선</strong></li>
+      <li>팀원들이 직접 확인할 수 있도록 <strong>Google Analytics 보고서 세팅</strong></li>
+      <li><strong>Data Sampling을 피하기 위한 Google API desktop app</strong>을 구현하여, 원하는 범위의 데이터를 하루하루 단위로 취합 후 자동 재구성해 지표 분석 편의성 개선</li>
     </ul>
   </section>
 

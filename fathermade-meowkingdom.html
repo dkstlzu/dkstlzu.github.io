@@ -100,6 +100,25 @@
   section h3:first-of-type{
     margin-top:0;
   }
+  section h3.bullet-title::before{
+    content:"•";
+    margin-right:8px;
+    color:var(--text-soft);
+  }
+  section h4{
+    font-size:0.95rem;
+    font-weight:700;
+    color:var(--text);
+    margin:20px 0 6px;
+  }
+  section h4 + p{
+    margin:0;
+    font-size:0.95rem;
+  }
+  section h4 + p strong{
+    color:var(--accent);
+    font-weight:600;
+  }
 
   .description{
     font-size:1rem;
@@ -116,12 +135,21 @@
   .content-list li{
     font-size:0.95rem;
     color:var(--text);
-    padding:12px 0 12px 24px;
-    border-left:3px solid var(--accent-soft);
+    padding:12px 0;
     margin:0;
   }
   .content-list li:first-child{
     padding-top:0;
+  }
+  .content-list.dot-list{
+    list-style:disc;
+    padding-left:1.2em;
+  }
+  .content-list.dot-list li{
+    padding:6px 0;
+  }
+  .content-list.dot-list li::marker{
+    color:var(--text-soft);
   }
   .content-list li strong{
     color:var(--accent);
@@ -143,6 +171,57 @@
     font-weight:500;
   }
 
+  .store-link{
+    color:var(--accent);
+    text-decoration:none;
+  }
+  .store-link:hover{
+    text-decoration:underline;
+  }
+
+  /* 태그 + 내용 (내용 시작 위치 정렬) */
+  .tagged-list li{
+    display:grid;
+    grid-template-columns:6.5rem 1fr;
+    column-gap:12px;
+    align-items:baseline;
+  }
+  .base-tag{
+    justify-self:stretch;
+    text-align:center;
+    font-size:0.78rem;
+    font-weight:500;
+    color:var(--text-soft);
+    border:1px solid var(--line);
+    border-radius:3px;
+    padding:1px 8px;
+    white-space:nowrap;
+  }
+
+  /* 라이브 서비스 요약 */
+  .live-summary{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:12px;
+    margin-top:24px;
+  }
+  .live-summary-item{
+    padding:14px 16px;
+    background:var(--accent-soft);
+    border-radius:4px;
+  }
+  .live-summary-item .label{
+    display:block;
+    font-size:0.82rem;
+    font-weight:700;
+    color:var(--accent);
+    margin-bottom:4px;
+  }
+  .live-summary-item .value{
+    font-size:0.92rem;
+    color:var(--text);
+  }
+
   footer{
     padding:40px 0 80px;
     font-size:0.82rem;
@@ -155,6 +234,15 @@
     .project-meta{
       flex-direction:column;
       gap:12px;
+    }
+    .live-summary{ grid-template-columns:1fr; }
+    .tagged-list li{
+      grid-template-columns:1fr;
+      row-gap:4px;
+    }
+    .base-tag{
+      justify-self:start;
+      width:6.5rem;
     }
   }
 </style>
@@ -177,80 +265,92 @@
       </div>
       <div class="meta-item">
         <span class="meta-label">기술</span>
-        <span class="meta-value">Unity, C#</span>
+        <span class="meta-value">Unity, C#, Visual Basic</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">스토어</span>
+        <span class="meta-value"><a class="store-link" href="https://apps.apple.com/kr/app/id1606840138" target="_blank" rel="noopener">App Store</a> · <a class="store-link" href="https://play.google.com/store/apps/details?id=com.fathermade.catkingdom" target="_blank" rel="noopener">Google Play</a></span>
       </div>
     </div>
   </header>
 
   <section class="overview">
     <p class="description">
-      국내 출시 직후에 합류한 프로젝트로 기존 시스템 파악 및 최대한 기존 작업 스타일을 해치지 않는 선에서 개발을 이어 나가는 데에 집중했습니다. 라이브 개발팀에서 일어날 수 있는 사건·사고들을 팀 내에서 경험하면서 경각심을 갖게 되고 안정적인 운영 서비스의 중요도를 알게 된 프로젝트입니다.
+      국내 출시 직후 합류해 글로벌 출시까지 함께한 라이브 서비스 프로젝트입니다. 이미 서비스 중인 코드베이스를 먼저 파악하고, 기존 구조와 작업 스타일을 해치지 않는 선에서 그 위에 신규 콘텐츠와 시스템을 얹는 작업을 주로 맡았습니다.
     </p>
+    <p class="description">
+      라이브 팀에서 실제로 일어나는 사건·사고를 함께 겪으며, 새 기능을 빠르게 내는 것만큼 서비스를 안정적으로 유지하는 것이 중요하다는 점을 체감했습니다.
+    </p>
+    <div class="live-summary">
+      <div class="live-summary-item">
+        <span class="label">합류 시점</span>
+        <span class="value">국내 출시 직후 → 글로벌 출시까지 참여</span>
+      </div>
+      <div class="live-summary-item">
+        <span class="label">주요 작업</span>
+        <span class="value">기존 전투·장비·월드 시스템을 파악하고 그 위에 확장</span>
+      </div>
+      <div class="live-summary-item">
+        <span class="label">라이브 운영</span>
+        <span class="value">이벤트 약 10종, 마을 상호작용 콘텐츠, 패키지 상품 수십 종</span>
+      </div>
+      <div class="live-summary-item">
+        <span class="label">서비스 품질</span>
+        <span class="value">운영 중 메모리·UI 최적화</span>
+      </div>
+    </div>
   </section>
 
-  <section class="main-content">
-    <h2>메인 콘텐츠 제작</h2>
-    <ul class="content-list">
-      <li>기존 전투 및 게임 시스템을 확장하여 일반 스토리 전투와 다른 <strong>보스레이드(토이레이드), 인트로 전투, 다수 파티아레나(마스터아레나)</strong>를 개발</li>
-      <li>신규 소속 진영 <strong>스텔라</strong> 구현</li>
-      <li>신규 지역 및 관련 시설, AI 등 구현</li>
-      <li>신규 등급 장비 <strong>초월 장비</strong> 구현</li>
-      <li>글로벌 채팅 시스템을 확장하여 <strong>개인 메시징 시스템</strong> 제안 및 구축</li>
+  <section class="extend">
+    <h2>기존 시스템 위에 콘텐츠 · 시스템 확장</h2>
+    <p class="description">
+      이미 돌아가고 있는 시스템의 구조를 이해하고, 기존 코드와 데이터 흐름에 자연스럽게 붙도록 확장했습니다.
+    </p>
+    <ul class="content-list tagged-list">
+      <li><span class="base-tag">전투 시스템</span><span>일반 스토리 전투와 규칙이 다른 <strong>토이레이드, 인트로 전투, 마스터 아레나</strong> 개발</span></li>
+      <li><span class="base-tag">장비 체계</span><span>신규 등급 <strong>초월 장비</strong> 구현</span></li>
+      <li><span class="base-tag">진영 · 월드</span><span><strong>신규 지역</strong> 및 관련 시설, AI 구현, 신규 소속 진영 <strong>스텔라</strong> 추가</span></li>
+      <li><span class="base-tag">프로필</span><span><strong>프로필 다중 슬롯, 편집, 업로드 기능</strong> 제안 및 구현</span></li>
+      <li><span class="base-tag">글로벌 채팅</span><span><strong>개인 메시징 시스템</strong> 제안 및 구축</span></li>
+    </ul>
+  </section>
+
+  <section class="live-content">
+    <h2>라이브 운영 콘텐츠</h2>
+    <ul class="content-list tagged-list">
+      <li><span class="base-tag">이벤트</span><span><strong>부르마블, 사과 미니게임, 수박 미니게임, 친구 초대</strong> 등 약 10종의 이벤트 제작</span></li>
+      <li><span class="base-tag">마을</span><span><strong>몬스터 숨바꼭질, 캐릭터 방문 이벤트, 만우절 이벤트</strong> 등 마을 상호작용 콘텐츠 제작</span></li>
+      <li><span class="base-tag">BM</span><span>BM 개선을 위한 수십 종의 <strong>패키지 상품</strong> 구현</span></li>
+      <li><span class="base-tag">UI/UX</span><span>UI/UX 개선 작업</span></li>
     </ul>
   </section>
 
   <section class="optimization">
-    <h2>게임 최적화</h2>
-    <h3>리소스 최적화</h3>
-    <ul class="content-list">
-      <li><strong>텍스처 리소스 메모리 120MB → 70MB 감소</strong> (리소스 해제 시점 및 중복 사용 점검)</li>
+    <h2>최적화</h2>
+    <p class="description">
+      콘텐츠가 계속 쌓이는 라이브 환경에서 리소스와 UI 부하를 점검했습니다.
+    </p>
+    <h3>메모리</h3>
+    <ul class="content-list dot-list">
+      <li>리소스 해제 시점 및 중복 사용을 점검해 <strong>텍스처 메모리 평균 120MB → 70MB (약 40% 감소)</strong></li>
+      <li>다국어 번역 문자열 컨테이너 메모리 최적화 <strong>약 28MB → 20MB (8MB 절감)</strong></li>
       <li>다국어 에셋이 메모리에서 내려가지 않는 현상 개선</li>
     </ul>
-    <h3>렌더링 최적화</h3>
-    <ul class="content-list">
+    <h3>런타임 · UI</h3>
+    <ul class="content-list dot-list">
       <li>화면 밖 콘텐츠의 업데이트 최소화</li>
-      <li>프레임 드랍이 확인되는 UI를 검수하고 최적화 진행</li>
-      <li><strong>아이콘 풀링 및 풀링 방식의 스크롤</strong>을 적용하여 UI 개수 간소화</li>
-    </ul>
-  </section>
-
-  <section class="sub-content">
-    <h2>서브 콘텐츠 제작</h2>
-    <ul class="content-list">
-      <li>리텐션 확보를 위한 <strong>마을 상호작용 콘텐츠</strong> 제작</li>
-      <li><strong>부르마블, 사과 미니게임, 수박 미니게임</strong> 등 약 10종의 이벤트 제작</li>
-      <li>친구 초대 이벤트 구현</li>
-      <li>BM 개선을 위해 수십 종의 <strong>패키지 상품</strong> 등을 구현</li>
-    </ul>
-  </section>
-
-  <section class="ui-improvement">
-    <h2>UI 구조 개선</h2>
-    <ul class="content-list">
-      <li>UI/UX 개선 작업 및 이벤트 UI들의 <strong>온디맨드 리소스 로드</strong> 적용</li>
-      <li><strong>프로필 다중 슬롯 및 편집, 업로드 기능</strong> 제안 및 구현</li>
+      <li>GC 유발 로직 제거</li>
+      <li>프레임 드랍이 확인되는 UI를 검수하고, <strong>아이콘 풀링 및 풀링 방식의 스크롤</strong>을 적용해 UI 오브젝트 수 절감</li>
     </ul>
   </section>
 
   <section class="tools">
-    <h2>글로벌 스토어 API 관련 툴 제작</h2>
-    <p class="description">
-      글로벌 출시에 따라 각 스토어의 인앱 상품 데이터 관리가 필요했습니다. 팀 내 테이블과 API 데이터 간의 변환 및 호환을 위해 Visual Basic으로 관련 툴을 제작했습니다.
-    </p>
-    <ul class="content-list">
-      <li><strong>주요 대상 오픈 국가:</strong> 일본, 미국, 대만, 유럽</li>
-      <li><strong>추가 지역:</strong> 동남아, 아랍 문화권 국가</li>
-      <li>Google Play Store, App Store API 자동 데이터 관리</li>
-    </ul>
-  </section>
-
-  <section class="community">
-    <h2>커뮤니티 관리 및 유저 대응</h2>
-    <ul class="content-list">
-      <li>공식 디스코드 커뮤니티 기본 관리</li>
-      <li>공식 문의 메일 관리</li>
-      <li>버그 보고에 따른 유저 대응 및 해결</li>
-    </ul>
+    <h2>인하우스 툴 개발</h2>
+    <h3 class="bullet-title">인앱 상품 관리 툴</h3>
+    <h4>문제상황</h4>
+    <p>글로벌 출시로 국가·스토어별 인앱 상품이 크게 늘었지만, 가격 등 상품 정보를 스토어 콘솔에 <strong>수기로 기입</strong>하고 있던 상황</p>
+    <h4>해결방안</h4>
+    <p><strong>Google Play · App Store API</strong>로 스토어 상품 데이터를 가져와 내부 상품 테이블과 비교·검증하고, 차이가 있는 항목을 <strong>코드로 일괄 세팅</strong>하는 툴을 Visual Basic으로 제작</p>
   </section>
 
   <footer>
